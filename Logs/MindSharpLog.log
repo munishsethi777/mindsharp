@@ -1,0 +1,893 @@
+09:50:07,510  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+09:50:07,541  INFO ApplicationMgr:45 - Context Reloaded
+10:02:07,431  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:02:07,464  INFO ApplicationMgr:45 - Context Reloaded
+10:04:36,941  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:04:36,974  INFO ApplicationMgr:45 - Context Reloaded
+10:06:51,860  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:06:51,893  INFO ApplicationMgr:45 - Context Reloaded
+10:12:32,691  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:12:32,721  INFO ApplicationMgr:45 - Context Reloaded
+19:29:19,136  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:29:33,370  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:29:33,465  INFO ApplicationMgr:45 - Context Reloaded
+19:39:37,174  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:39:37,250  INFO ApplicationMgr:45 - Context Reloaded
+19:39:47,504  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:39:47,572  INFO ApplicationMgr:45 - Context Reloaded
+19:40:11,496  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:40:11,574  INFO ApplicationMgr:45 - Context Reloaded
+19:47:04,980  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:47:05,061  INFO ApplicationMgr:45 - Context Reloaded
+19:49:23,806  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:49:23,900  INFO ApplicationMgr:45 - Context Reloaded
+19:53:27,076  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:53:27,163  INFO ApplicationMgr:45 - Context Reloaded
+19:57:59,915  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+19:57:59,995  INFO ApplicationMgr:45 - Context Reloaded
+20:00:12,574  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:00:12,659  INFO ApplicationMgr:45 - Context Reloaded
+20:06:26,213  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:06:26,290  INFO ApplicationMgr:45 - Context Reloaded
+20:07:34,754  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:07:34,838  INFO ApplicationMgr:45 - Context Reloaded
+21:46:43,335  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:46:43,402  INFO ApplicationMgr:45 - Context Reloaded
+21:46:58,834  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:46:58,881  INFO ApplicationMgr:45 - Context Reloaded
+22:18:31,870  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:18:31,931  INFO ApplicationMgr:45 - Context Reloaded
+22:47:55,285  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:47:55,350  INFO ApplicationMgr:45 - Context Reloaded
+22:49:42,925  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:49:42,980  INFO ApplicationMgr:45 - Context Reloaded
+22:51:48,361  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:51:48,424  INFO ApplicationMgr:45 - Context Reloaded
+22:53:27,357  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:53:27,424  INFO ApplicationMgr:45 - Context Reloaded
+22:56:22,442  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:56:22,490  INFO ApplicationMgr:45 - Context Reloaded
+22:57:32,734  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:57:32,795  INFO ApplicationMgr:45 - Context Reloaded
+23:01:03,396  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:01:03,469  INFO ApplicationMgr:45 - Context Reloaded
+23:02:57,038  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:02:57,118  INFO ApplicationMgr:45 - Context Reloaded
+23:08:31,226  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:08:31,284  INFO ApplicationMgr:45 - Context Reloaded
+10:36:24,947  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:36:25,078  INFO ApplicationMgr:45 - Context Reloaded
+10:42:06,093  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:42:06,160  INFO ApplicationMgr:45 - Context Reloaded
+10:55:02,817 ERROR UserDataStore:173 - Error setting myskills on user
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillBadgeType.Starter
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillBadgeType.valueOf(GameSkillBadgeType.java:1)
+	at com.satya.Persistence.Impl.UserBadgeDataStore$1.mapRow(UserBadgeDataStore.java:72)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.UserBadgeDataStore.findBadges(UserBadgeDataStore.java:67)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:170)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:88)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:37)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:133)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+17:33:52,289  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+17:33:52,528  INFO ApplicationMgr:45 - Context Reloaded
+20:55:56,568  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:55:56,713  INFO ApplicationMgr:45 - Context Reloaded
+20:58:48,279 ERROR AuthenticationFilter:80 - Exception ouccered
+org.apache.jasper.JasperException: Unable to compile class for JSP: 
+JSP FileName:/myAccount.jsp
+Java FileName:/D:/projects/Java Projects/tomcat/work/Catalina/localhost/MindSharp//org/apache/jsp\myAccount_jsp.java
+
+An error occurred at line: 167 in the jsp file: /myAccount.jsp
+The method getStatus() is undefined for the type User
+164:     		</tr>
+165: 			<tr>
+166:     			<td class="gameLabelTD">User Status</td>
+167:     			<td class="gameValueTD"><%=loggedinUser.getStatus()%></td>
+168:     		</tr>
+169:     	</table>
+170:     	
+
+
+Stacktrace:
+	at org.apache.jasper.compiler.DefaultErrorHandler.javacError(DefaultErrorHandler.java:98)
+	at org.apache.jasper.compiler.ErrorDispatcher.javacError(ErrorDispatcher.java:330)
+	at org.apache.jasper.compiler.JDTCompiler.generateClass(JDTCompiler.java:435)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:298)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:277)
+	at org.apache.jasper.compiler.Compiler.compile(Compiler.java:265)
+	at org.apache.jasper.JspCompilationContext.compile(JspCompilationContext.java:564)
+	at org.apache.jasper.servlet.JspServletWrapper.service(JspServletWrapper.java:302)
+	at org.apache.jasper.servlet.JspServlet.serviceJspFile(JspServlet.java:329)
+	at org.apache.jasper.servlet.JspServlet.service(JspServlet.java:265)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.ApplicationDispatcher.invoke(ApplicationDispatcher.java:691)
+	at org.apache.catalina.core.ApplicationDispatcher.processRequest(ApplicationDispatcher.java:469)
+	at org.apache.catalina.core.ApplicationDispatcher.doForward(ApplicationDispatcher.java:403)
+	at org.apache.catalina.core.ApplicationDispatcher.forward(ApplicationDispatcher.java:301)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:81)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:00:16,894  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:00:16,958  INFO ApplicationMgr:48 - Context Reloaded
+21:20:09,722 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:88)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:37)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:133)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:20:25,077 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:252)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:83)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:32:04,189 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:88)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:37)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:133)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:32:11,157 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:252)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:83)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:32:29,426 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:252)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:83)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:34:01,521 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:252)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:83)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:36:40,398  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:36:40,453  INFO ApplicationMgr:48 - Context Reloaded
+21:41:40,887  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:41:40,958  INFO ApplicationMgr:48 - Context Reloaded
+22:37:59,162  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:37:59,329  INFO ApplicationMgr:48 - Context Reloaded
+22:38:14,747 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:88)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:37)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:141)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:42:11,959  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:42:12,026  INFO ApplicationMgr:48 - Context Reloaded
+22:42:21,313  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:42:21,363  INFO ApplicationMgr:48 - Context Reloaded
+22:42:53,857  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:42:53,918  INFO ApplicationMgr:48 - Context Reloaded
+22:45:16,327  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:45:16,375  INFO ApplicationMgr:48 - Context Reloaded
+22:47:41,292  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:47:41,351  INFO ApplicationMgr:48 - Context Reloaded
+22:47:55,605 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:88)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:37)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:141)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:48:03,737 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:258)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:84)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:50:16,917 ERROR UserDataStore:165 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:163)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:96)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:76)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:258)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:84)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:59:44,861  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:59:44,908  INFO ApplicationMgr:48 - Context Reloaded
+23:00:15,086  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:00:15,145  INFO ApplicationMgr:48 - Context Reloaded
+23:03:03,825 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.changePassword(UserMgr.java:188)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+23:03:13,073 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.changePassword(UserMgr.java:188)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+23:03:18,990 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.changePassword(UserMgr.java:188)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+23:03:32,673 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.changePassword(UserMgr.java:188)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+23:04:52,017 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.changePassword(UserMgr.java:188)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:139)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+23:29:13,861  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:29:13,926  INFO ApplicationMgr:48 - Context Reloaded
+23:31:48,522  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:31:48,590  INFO ApplicationMgr:48 - Context Reloaded
+23:33:27,488  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:33:27,562  INFO ApplicationMgr:48 - Context Reloaded
+23:36:22,202  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+23:36:22,272  INFO ApplicationMgr:48 - Context Reloaded
+09:37:12,748  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+09:37:12,851  INFO ApplicationMgr:48 - Context Reloaded
+09:43:13,634  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+09:43:13,714  INFO ApplicationMgr:48 - Context Reloaded
+09:43:38,236  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+09:43:38,315  INFO ApplicationMgr:48 - Context Reloaded
+10:22:06,707  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:22:06,801  INFO ApplicationMgr:48 - Context Reloaded
+10:35:20,108  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:35:20,178  INFO ApplicationMgr:48 - Context Reloaded
+10:42:30,808  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:42:30,871  INFO ApplicationMgr:48 - Context Reloaded
+10:43:21,054  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:43:21,124  INFO ApplicationMgr:48 - Context Reloaded
+10:44:01,315  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:44:01,389  INFO ApplicationMgr:48 - Context Reloaded
+10:46:11,693  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:46:11,982  INFO ApplicationMgr:48 - Context Reloaded
+10:46:32,129  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+10:46:32,213  INFO ApplicationMgr:48 - Context Reloaded
+11:15:29,241  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:15:29,322  INFO ApplicationMgr:48 - Context Reloaded
+11:18:22,070  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:18:22,143  INFO ApplicationMgr:48 - Context Reloaded
+11:18:32,140  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:18:32,216  INFO ApplicationMgr:48 - Context Reloaded
+11:21:04,923  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:21:05,000  INFO ApplicationMgr:48 - Context Reloaded
+11:21:21,972  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:21:22,045  INFO ApplicationMgr:48 - Context Reloaded
+11:21:37,548  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:21:37,620  INFO ApplicationMgr:48 - Context Reloaded
+11:24:05,627  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:24:05,691  INFO ApplicationMgr:48 - Context Reloaded
+11:24:41,751  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:24:41,817  INFO ApplicationMgr:48 - Context Reloaded
+11:25:24,341  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:25:24,400  INFO ApplicationMgr:48 - Context Reloaded
+11:25:56,074  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:25:56,141  INFO ApplicationMgr:48 - Context Reloaded
+11:29:28,945  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:29:29,005  INFO ApplicationMgr:48 - Context Reloaded
+11:31:11,723  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:31:11,783  INFO ApplicationMgr:48 - Context Reloaded
+11:32:17,206 ERROR AuthenticationFilter:80 - Exception ouccered
+javax.servlet.ServletException: Servlet execution threw an exception
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:292)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+11:35:16,307  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:35:16,369  INFO ApplicationMgr:48 - Context Reloaded
+11:42:56,867  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:42:56,935  INFO ApplicationMgr:48 - Context Reloaded
+11:43:56,430  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:43:56,499  INFO ApplicationMgr:48 - Context Reloaded
+11:45:51,929  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:45:51,989  INFO ApplicationMgr:48 - Context Reloaded
+11:47:52,528  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+11:47:52,589  INFO ApplicationMgr:48 - Context Reloaded
+22:09:24,299  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:09:24,486  INFO ApplicationMgr:48 - Context Reloaded
+22:15:28,905  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:15:28,976  INFO ApplicationMgr:48 - Context Reloaded
+22:16:14,815 ERROR UserDataStore:170 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:168)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:101)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:93)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:44)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:135)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:16:21,879 ERROR UserDataStore:170 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:168)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:101)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findBySeq(UserDataStore.java:81)
+	at com.satya.Managers.UserMgr.updateAccountInfo(UserMgr.java:333)
+	at com.satya.Servlets.UserServlet.doGet(UserServlet.java:82)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:690)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:18:01,392 ERROR UserDataStore:170 - Error converting to GameSkillType from 
+java.lang.IllegalArgumentException: No enum const class com.satya.enums.GameSkillType.
+	at java.lang.Enum.valueOf(Unknown Source)
+	at com.satya.enums.GameSkillType.valueOf(GameSkillType.java:1)
+	at com.satya.Persistence.Impl.UserDataStore.populateObjectFromResultSet(UserDataStore.java:168)
+	at com.satya.Persistence.Impl.UserDataStore.mapRow(UserDataStore.java:101)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:188)
+	at com.satya.Persistence.Impl.PersistenceMgr.executePSQuery(PersistenceMgr.java:157)
+	at com.satya.Persistence.Impl.PersistenceMgr.executeSingleObjectQuery(PersistenceMgr.java:147)
+	at com.satya.Persistence.Impl.UserDataStore.findByUserNamePassword(UserDataStore.java:93)
+	at com.satya.Managers.UserMgr.login(UserMgr.java:44)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:135)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:19:31,820  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:19:31,890  INFO ApplicationMgr:48 - Context Reloaded
+22:19:52,056  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:19:52,131  INFO ApplicationMgr:48 - Context Reloaded
+22:20:39,756  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:20:39,827  INFO ApplicationMgr:48 - Context Reloaded
+22:33:55,582  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:33:55,657  INFO ApplicationMgr:48 - Context Reloaded
+22:36:25,195 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.uploadImage(UserMgr.java:174)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:143)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+22:36:51,043  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:36:51,114  INFO ApplicationMgr:48 - Context Reloaded
+22:38:53,783  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:38:53,847  INFO ApplicationMgr:48 - Context Reloaded
+22:41:01,679  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:41:01,749  INFO ApplicationMgr:48 - Context Reloaded
+22:45:34,655  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:45:34,729  INFO ApplicationMgr:48 - Context Reloaded
+22:49:07,127  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:49:07,196  INFO ApplicationMgr:48 - Context Reloaded
+21:36:45,889  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:36:46,067  INFO ApplicationMgr:48 - Context Reloaded
+21:47:37,053  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:47:37,083  INFO ApplicationMgr:48 - Context Reloaded
+22:03:40,487  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+22:03:40,572  INFO ApplicationMgr:48 - Context Reloaded
+20:54:04,153  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:54:04,483  INFO ApplicationMgr:48 - Context Reloaded
+21:02:47,561  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:02:47,636  INFO ApplicationMgr:48 - Context Reloaded
+21:08:27,800  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:08:27,868  INFO ApplicationMgr:48 - Context Reloaded
+21:10:06,425  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:10:06,495  INFO ApplicationMgr:48 - Context Reloaded
+21:10:59,014  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:10:59,093  INFO ApplicationMgr:48 - Context Reloaded
+21:11:13,458  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:11:13,528  INFO ApplicationMgr:48 - Context Reloaded
+21:12:06,095  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:12:06,168  INFO ApplicationMgr:48 - Context Reloaded
+21:12:18,638  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:12:18,700  INFO ApplicationMgr:48 - Context Reloaded
+21:16:49,452  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:16:49,516  INFO ApplicationMgr:48 - Context Reloaded
+21:17:29,699  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:17:29,766  INFO ApplicationMgr:48 - Context Reloaded
+21:22:20,262  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:22:20,329  INFO ApplicationMgr:48 - Context Reloaded
+21:22:40,485  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:22:40,546  INFO ApplicationMgr:48 - Context Reloaded
+21:23:40,164  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:23:40,225  INFO ApplicationMgr:48 - Context Reloaded
+21:25:12,853  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:25:12,917  INFO ApplicationMgr:48 - Context Reloaded
+21:26:06,654  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:26:06,721  INFO ApplicationMgr:48 - Context Reloaded
+21:27:40,243  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:27:40,320  INFO ApplicationMgr:48 - Context Reloaded
+21:31:21,042  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:31:21,120  INFO ApplicationMgr:48 - Context Reloaded
+21:31:28,254  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:31:28,332  INFO ApplicationMgr:48 - Context Reloaded
+21:34:36,106  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:34:36,179  INFO ApplicationMgr:48 - Context Reloaded
+21:35:31,236  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:35:31,278  INFO ApplicationMgr:48 - Context Reloaded
+21:36:38,066 ERROR AuthenticationFilter:80 - Exception ouccered
+java.lang.NullPointerException
+	at com.satya.Managers.UserMgr.uploadImage(UserMgr.java:174)
+	at com.satya.Servlets.UserServlet.doPost(UserServlet.java:143)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:803)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:269)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at com.satya.Filter.AuthenticationFilter.doFilter(AuthenticationFilter.java:74)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:215)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:188)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:213)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:174)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:127)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:117)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:108)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:151)
+	at org.apache.coyote.http11.Http11Processor.process(Http11Processor.java:874)
+	at org.apache.coyote.http11.Http11BaseProtocol$Http11ConnectionHandler.processConnection(Http11BaseProtocol.java:665)
+	at org.apache.tomcat.util.net.PoolTcpEndpoint.processSocket(PoolTcpEndpoint.java:528)
+	at org.apache.tomcat.util.net.LeaderFollowerWorkerThread.runIt(LeaderFollowerWorkerThread.java:81)
+	at org.apache.tomcat.util.threads.ThreadPool$ControlRunnable.run(ThreadPool.java:689)
+	at java.lang.Thread.run(Unknown Source)
+21:38:01,903  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+21:38:01,929  INFO ApplicationMgr:48 - Context Reloaded
+20:08:33,914  INFO ApplicationMgr:17 - Reloading Context Servlet Called....
+20:08:34,127  INFO ApplicationMgr:48 - Context Reloaded
