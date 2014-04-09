@@ -100,7 +100,7 @@
 	</c:if>
 	<%	List<String> sccMessages =(List<String>) request.getAttribute("sccMessages"); %>
 	<c:if test="${sccMessages != null}">
-			<p style="padding:10px 10px 10px 10px;">
+			<p style="padding:10px 10px 10px 10px;" class="ui-state-highlight">
 			<c:forEach items="${sccMessages}" var="sccmsg">
 				<c:out value="${sccmsg}" /> </br>
 			</c:forEach>
