@@ -1,0 +1,88 @@
+body{
+    font: 12px "Trebuchet MS", sans-serif; 
+    margin: 50px; 
+    background-color:#F8F8F8; 
+    margin-top:5px
+}
+.leftButton{
+    padding:5px 5px 5px 5px;
+    display:block;
+    margin-bottom:5px;
+}
+.leftChildButton{
+    margin-left:20px;
+}
+.leftButtonPanel{
+   width:15%; 
+   float:left;
+   display:block;
+   background:white;
+   min-height:600px;
+}
+.rightAdminPanel{
+   float:right;
+   background:white;
+   width:85%;
+   min-height:600px;
+}
+.logoutButton{
+  float:right;
+  padding:4px 4px 4px 4px;
+}
+.AddFolderDiv{
+    margin:5px 5px 5px 5px;
+}
+
+.required{
+color:#FF0000;
+}
+.bodyDiv{
+	width:1200px;
+}
+.skillDiv{
+  				padding:5px 20px 5px 20px;
+				margin-right:10px;
+  				float:left;
+  				border:solid #BBB thin;
+				background-color:#EEE;
+				color:grey;
+				
+  			}
+  			.skillDiv:hover{
+  				background-color:white;
+  				border:solid grey thin;
+  				color:grey;
+				
+  			}
+  			.skillDivs{
+  				border:solid #EEE thin;
+  				padding:7px;
+  				display:block;
+  				margin:5px 0px 5px 0px;
+  				width:100%;
+  				height:30px;
+  			}
+  			.gameDiv{
+  				width:300px;
+  				float:left;
+  				border:solid silver thin;
+  				padding:10px;
+  				margin:10px;
+  			}
+ 			.gameDiv img{
+ 				border:solid grey thin;
+ 			}
+
+.gameLabelTD{
+	text-align:right;
+	vertical-align: top;
+	width:120px;
+	padding:12px;
+	font-size:14px;
+	background:#EEE;
+	border:#BBB solid thin;
+}
+.gameValueTD{
+	border-bottom:#BBB solid thin;
+	
+}
