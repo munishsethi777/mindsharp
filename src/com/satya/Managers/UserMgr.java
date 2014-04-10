@@ -1,6 +1,5 @@
 package com.satya.Managers;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,7 +16,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
@@ -34,7 +32,7 @@ import com.satya.enums.GameSkillType;
 
 public class UserMgr {
 	Logger log = Logger.getLogger(UserMgr.class.getName());
-	
+
 	public void login(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		String userName = request.getParameter("username");
@@ -67,7 +65,7 @@ public class UserMgr {
 		}
 
 	}
-	
+
 	public void signup(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
@@ -77,7 +75,7 @@ public class UserMgr {
 		String cpassword = request.getParameter("cpassword");
 		String fullName = request.getParameter("fullName");
 		String promCode = request.getParameter("refCode");
-		
+
 		List<String> errorMsgs = new ArrayList<String>();
 
 		if (checkEmpty(emailId)) {
@@ -103,37 +101,37 @@ public class UserMgr {
 			errorMsgs.add("User with username '" + userName
 					+ "' already exists, Enter some other username");
 		}
-		
+
 		User user = new User();
-		//Any user signinup is a limited user.
-		//will be termed full when paid for the application.
+		// Any user signinup is a limited user.
+		// will be termed full when paid for the application.
 		user.setIsLimited(true);
 		PromotionsDataStoreI PDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getPromotionsDataStore();
-		Promotion promotion = PDS.findByCode("FREE");
+		Promotion promotion = PDS.findByCode(promCode);
 		List<Game> freeGames = promotion.getFreeGames();
-		
-		if(promCode != null && !promCode.equals("")){
-			log.info("Using promotion code as "+ promCode);
+
+		if (promCode != null && !promCode.equals("")) {
+			log.info("Using promotion code as " + promCode);
 			promotion = PDS.findByCode(promCode);
-			if(promotion == null){
+			if (promotion == null) {
 				log.error("No promotion code found");
 				errorMsgs.add("Invalid Promotion Code entered.");
-			}else if(promotion.getExpiryDate().after(new Date())){
+			} else if (promotion.getExpiryDate().after(new Date())) {
 				log.error("Expired Promotion Code");
 				errorMsgs.add("Promotion Code expired.");
-			}else{
+			} else {
 				user.setOrganization(promotion.getOrganization());
 				freeGames = promotion.getFreeGames();
 			}
 		}
-		
+
 		user.setEmailId(emailId);
 		user.setUserName(userName);
 		user.setPassword(password);
 		user.setFullName(fullName);
 		user.setSignupDate(new Date());
-		
+
 		if (errorMsgs != null && errorMsgs.size() > 0) {
 			request.setAttribute(IConstants.errMessages, errorMsgs);
 			request.setAttribute("user", user);
@@ -144,108 +142,116 @@ public class UserMgr {
 			HttpSession session = request.getSession(true);
 			session.setAttribute(IConstants.loggedInUser, user);
 			request.setAttribute(IConstants.loggedInUser, user);
-			if(freeGames != null){
-				UserGameDataStoreI UGDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserGameDataStore();
-				
-				for(Game freeGame : freeGames){
+			if (freeGames != null) {
+				UserGameDataStoreI UGDS = ApplicationContext
+						.getApplicationContext().getDataStoreMgr()
+						.getUserGameDataStore();
+
+				for (Game freeGame : freeGames) {
 					UserGame userGame = new UserGame();
 					userGame.setEnrollmentDate(new Date());
 					Calendar validTillCalendar = Calendar.getInstance();
-					validTillCalendar.add(Calendar.DAY_OF_YEAR, promotion.getGamesValidityDays());
+					validTillCalendar.add(Calendar.DAY_OF_YEAR,
+							promotion.getGamesValidityDays());
 					userGame.setValidTillDate(validTillCalendar.getTime());
 					userGame.setGame(freeGame);
-					userGame.setUser(ApplicationContext.getApplicationContext().getLoggedinUser(request));
+					userGame.setUser(ApplicationContext.getApplicationContext()
+							.getLoggedinUser(request));
 					UGDS.saveUserGame(userGame);
 				}
 			}
-			
+
 			request.getRequestDispatcher("dashboard.jsp").forward(request,
 					response);
 		}
 
 	}
 
-	
-	public void uploadImage(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-		      // Check that we have a file upload request
+	public void uploadImage(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		// Check that we have a file upload request
 		List<String> errorMsgs = new ArrayList<String>();
 		String imageName = request.getParameter("userImg");
-		UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
-		User user = UDS.findBySeq(ApplicationContext.getApplicationContext().getLoggedinUser(request).getSeq());
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getSeq());
 		if (checkEmpty(imageName)) {
-			//errorMsgs.add("Choose Image File");
+			// errorMsgs.add("Choose Image File");
 		}
 		if (errorMsgs != null && errorMsgs.size() > 0) {
-			request.setAttribute(IConstants.errMessages, errorMsgs);			
+			request.setAttribute(IConstants.errMessages, errorMsgs);
 		} else {
-		      Boolean isMultipart = ServletFileUpload.isMultipartContent(request);
-		      if(isMultipart){  	  
-		    	  FileItemFactory factory = new DiskFileItemFactory();
-		    	  ServletFileUpload upload = new ServletFileUpload(factory);
-		      try{ 
-		          List fileItems = upload.parseRequest(request);
-				  Iterator i = fileItems.iterator();
-			      while ( i.hasNext () ) 
-			      {
-			         FileItem fi = (FileItem)i.next();
-			         if ( !fi.isFormField () )	
-			         {
-			            String fileName = fi.getName();			            			
-						user.setImageName(fileName);
-						user.setImageByte(fi.get());
-						UDS.updateImage(user);
-				     }
-			      }
-		      }catch(Exception ex) {
-		    	  System.out.println(ex);
-		      }
-		   }
-		    HttpSession session = request.getSession(true);
+			Boolean isMultipart = ServletFileUpload.isMultipartContent(request);
+			if (isMultipart) {
+				FileItemFactory factory = new DiskFileItemFactory();
+				ServletFileUpload upload = new ServletFileUpload(factory);
+				try {
+					List fileItems = upload.parseRequest(request);
+					Iterator i = fileItems.iterator();
+					while (i.hasNext()) {
+						FileItem fi = (FileItem) i.next();
+						if (!fi.isFormField()) {
+							String fileName = fi.getName();
+							user.setImageName(fileName);
+							user.setImageByte(fi.get());
+							UDS.updateImage(user);
+						}
+					}
+				} catch (Exception ex) {
+					System.out.println(ex);
+				}
+			}
+			HttpSession session = request.getSession(true);
 			session.setAttribute(IConstants.loggedInUser, user);
 			request.setAttribute(IConstants.loggedInUser, user);
 			List<String> sccMsgs = new ArrayList<String>();
 			sccMsgs.add("Image Uploaded Sucessfully.");
 			request.setAttribute(IConstants.sccMessages, sccMsgs);
 		}
-		request.getRequestDispatcher("myAccount.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("myAccount.jsp")
+				.forward(request, response);
 	}
-//	public  void uploadImage(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException{
-//		List<String> errorMsgs = new ArrayList<String>();
-//		String imageName = request.getParameter("userImg");
-//		if (checkEmpty(imageName)) {
-//			errorMsgs.add("Choose Image File");
-//		}
-//		if (errorMsgs != null && errorMsgs.size() > 0) {
-//			request.setAttribute(IConstants.errMessages, errorMsgs);			
-//		} else {
-//			UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
-//			User user = UDS.findBySeq(ApplicationContext.getApplicationContext().getLoggedinUser(request).getSeq());			
-//			user.setImageName(imageName);
-//			try {
-//				UDS.updateImage(user);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			HttpSession session = request.getSession(true);
-//			session.setAttribute(IConstants.loggedInUser, user);
-//			request.setAttribute(IConstants.loggedInUser, user);
-//			List<String> sccMsgs = new ArrayList<String>();
-//			sccMsgs.add("Image Uploaded Sucessfully.");
-//			request.setAttribute(IConstants.sccMessages, sccMsgs);
-//		}
-//		request.getRequestDispatcher("myAccount.jsp").forward(request,
-//				response);
-//		
-//	}
-	public void changePassword(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
+
+	// public void uploadImage(HttpServletRequest request, HttpServletResponse
+	// response)throws ServletException, IOException{
+	// List<String> errorMsgs = new ArrayList<String>();
+	// String imageName = request.getParameter("userImg");
+	// if (checkEmpty(imageName)) {
+	// errorMsgs.add("Choose Image File");
+	// }
+	// if (errorMsgs != null && errorMsgs.size() > 0) {
+	// request.setAttribute(IConstants.errMessages, errorMsgs);
+	// } else {
+	// UserDataStoreI UDS =
+	// ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
+	// User user =
+	// UDS.findBySeq(ApplicationContext.getApplicationContext().getLoggedinUser(request).getSeq());
+	// user.setImageName(imageName);
+	// try {
+	// UDS.updateImage(user);
+	// } catch (Exception e) {
+	// // TODO Auto-generated catch block
+	// e.printStackTrace();
+	// }
+	// HttpSession session = request.getSession(true);
+	// session.setAttribute(IConstants.loggedInUser, user);
+	// request.setAttribute(IConstants.loggedInUser, user);
+	// List<String> sccMsgs = new ArrayList<String>();
+	// sccMsgs.add("Image Uploaded Sucessfully.");
+	// request.setAttribute(IConstants.sccMessages, sccMsgs);
+	// }
+	// request.getRequestDispatcher("myAccount.jsp").forward(request,
+	// response);
+	//
+	// }
+	public void changePassword(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
 		List<String> errorMsgs = new ArrayList<String>();
 		String currentPassword = request.getParameter("currentPassword");
 		String newPassword = request.getParameter("newPassword");
 		String confirmPassword = request.getParameter("confirmPassword");
-		
+
 		if (checkEmpty(currentPassword)) {
 			errorMsgs.add("Current Password is Required");
 		}
@@ -255,20 +261,24 @@ public class UserMgr {
 		if (checkEmpty(confirmPassword)) {
 			errorMsgs.add("Confirm Password is Required");
 		}
-		if(newPassword != null && confirmPassword != null){
-			if(!newPassword.equals(confirmPassword)){
-				errorMsgs.add("New Password and Confirm Password can not be different");
+		if (newPassword != null && confirmPassword != null) {
+			if (!newPassword.equals(confirmPassword)) {
+				errorMsgs
+						.add("New Password and Confirm Password can not be different");
 			}
 		}
-		if(!ApplicationContext.getApplicationContext().getLoggedinUser(request).getPassword().equals(currentPassword)){
+		if (!ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getPassword().equals(currentPassword)) {
 			errorMsgs.add("False Current Password. Pls check");
 		}
 		if (errorMsgs != null && errorMsgs.size() > 0) {
 			request.setAttribute(IConstants.errMessages, errorMsgs);
-			
+
 		} else {
-			UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
-			User user = UDS.findBySeq(ApplicationContext.getApplicationContext().getLoggedinUser(request).getSeq());
+			UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+					.getDataStoreMgr().getUserDataStore();
+			User user = UDS.findBySeq(ApplicationContext
+					.getApplicationContext().getLoggedinUser(request).getSeq());
 			user.setPassword(newPassword);
 			UDS.changePassword(user);
 			HttpSession session = request.getSession(true);
@@ -278,43 +288,48 @@ public class UserMgr {
 			sccMsgs.add("Password Updated successfully.");
 			request.setAttribute(IConstants.sccMessages, sccMsgs);
 		}
-		request.getRequestDispatcher("myAccount.jsp").forward(request,
-				response);
+		request.getRequestDispatcher("myAccount.jsp")
+				.forward(request, response);
 	}
-	
-	private boolean checkEmpty(String str){
+
+	private boolean checkEmpty(String str) {
 		boolean isNull = true;
-		if(str != null && !str.trim().equals("")){
+		if (str != null && !str.trim().equals("")) {
 			isNull = false;
 		}
 		return isNull;
 	}
-	
-	public void reloadSessionUser(HttpServletRequest request){
-		UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
+
+	public void reloadSessionUser(HttpServletRequest request) {
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
 		HttpSession session = request.getSession(true);
-		User loggedUser = (User)session.getAttribute(IConstants.loggedInUser);
+		User loggedUser = (User) session.getAttribute(IConstants.loggedInUser);
 		User user = UDS.findBySeq(loggedUser.getSeq());
 		session.setAttribute(IConstants.loggedInUser, user);
 		request.setAttribute(IConstants.loggedInUser, user);
 	}
 
-	public JSONObject saveMySkills(String skillIds, User user, HttpServletRequest request){
+	public JSONObject saveMySkills(String skillIds, User user,
+			HttpServletRequest request) {
 		JSONObject json = new JSONObject();
-		try{
-			UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
+		try {
+			UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+					.getDataStoreMgr().getUserDataStore();
 			UDS.updateMySkills(user, skillIds);
 			json.put("RESPONSE", "SUCCESS");
-			ApplicationContext.getApplicationContext().getUserMgr().reloadSessionUser(request);
-		}catch(Exception e){
-			try{
+			ApplicationContext.getApplicationContext().getUserMgr()
+					.reloadSessionUser(request);
+		} catch (Exception e) {
+			try {
 				json.put("RESPONSE", "FAILURE");
-			}catch(Exception e1){}
+			} catch (Exception e1) {
+			}
 		}
 		return json;
 	}
-	
-	public JSONObject getMySkills(User user){
+
+	public JSONObject getMySkills(User user) {
 		JSONObject json = new JSONObject();
 		try {
 			for (GameSkillType skillType : user.getMySkills()) {
@@ -325,13 +340,16 @@ public class UserMgr {
 		}
 		return json;
 	}
-	
-	public void updateAccountInfo(HttpServletRequest request, HttpServletResponse response){
-		UserDataStoreI UDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
+
+	public void updateAccountInfo(HttpServletRequest request,
+			HttpServletResponse response) {
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
 		HttpSession session = request.getSession(true);
-		User loggedUser = (User)session.getAttribute(IConstants.loggedInUser);
+		User loggedUser = (User) session.getAttribute(IConstants.loggedInUser);
 		User user = UDS.findBySeq(loggedUser.getSeq());
-		UserStatusMgr userStatusMgr = ApplicationContext.getApplicationContext().getUserStatusMgr();
+		UserStatusMgr userStatusMgr = ApplicationContext
+				.getApplicationContext().getUserStatusMgr();
 		String userStatus = userStatusMgr.getUserSatus(user);
 		user.setStatus(userStatus);
 		session.setAttribute(IConstants.loggedInUser, user);

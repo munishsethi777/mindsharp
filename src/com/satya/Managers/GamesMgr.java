@@ -14,40 +14,40 @@ public class GamesMgr {
 
 	public static JSONArray GetJSON(List<Game> games) {
 		JSONArray jsonArray = new JSONArray();
-		try{
-		for (Game game : games) {
-			JSONObject json = new JSONObject();
-			json.put("seq", game.getSeq());
-			json.put("gameName", game.getName());
-			json.put("gamePath", game.getPath());
-			json.put("gameDescription", game.getDescription());
-			json.put("gameSkillTypeName", game.getGameSkillType().name());
-			
-			JSONArray jsonTags = new JSONArray();
-			for(Tag tag : game.getTags()){
-				jsonTags.put(tag.getTag());
+		try {
+			for (Game game : games) {
+				JSONObject json = new JSONObject();
+				json.put("seq", game.getSeq());
+				json.put("gameName", game.getName());
+				json.put("gamePath", game.getPath());
+				json.put("gameDescription", game.getDescription());
+				json.put("gameSkillTypeName", game.getGameSkillType().name());
+
+				JSONArray jsonTags = new JSONArray();
+				for (Tag tag : game.getTags()) {
+					jsonTags.put(tag.getTag());
+				}
+
+				json.put("tags", jsonTags);
+				jsonArray.put(json);
 			}
-			
-			json.put("tags",jsonTags);
-			jsonArray.put(json);
-		}
-		}catch (Exception e){
-			
+		} catch (Exception e) {
+
 		}
 		return jsonArray;
 	}
-	
+
 	public static JSONArray GetTagsJSON(List<Tag> tags) {
 		JSONArray jsonArray = new JSONArray();
-		try{
-		for (Tag tag: tags) {
-			JSONObject json = new JSONObject();
-			json.put("seq", tag.getSeq());
-			json.put("tag", tag.getTag());
-			jsonArray.put(json);
-		}
-		}catch (Exception e){
-			
+		try {
+			for (Tag tag : tags) {
+				JSONObject json = new JSONObject();
+				json.put("seq", tag.getSeq());
+				json.put("tag", tag.getTag());
+				jsonArray.put(json);
+			}
+		} catch (Exception e) {
+
 		}
 		return jsonArray;
 	}
@@ -59,7 +59,7 @@ public class GamesMgr {
 		JSONObject json = new JSONObject();
 		try {
 			for (GameSkillType skillType : allSkills) {
-				if (!userSkills.contains(skillType)) {
+				if (userSkills == null || !userSkills.contains(skillType)) {
 					json.put(skillType.key(), skillType.name());
 				}
 			}
