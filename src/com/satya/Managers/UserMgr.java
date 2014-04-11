@@ -108,7 +108,7 @@ public class UserMgr {
 		user.setIsLimited(true);
 		PromotionsDataStoreI PDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getPromotionsDataStore();
-		Promotion promotion = PDS.findByCode(promCode);
+		Promotion promotion = PDS.findByCode("Free");
 		List<Game> freeGames = promotion.getFreeGames();
 
 		if (promCode != null && !promCode.equals("")) {
