@@ -1,9 +1,6 @@
 package com.satya.Servlets;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.Date;
 import java.util.List;
 
@@ -11,7 +8,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.jsp.tagext.TagSupport;
 
 import org.json.JSONArray;
 
@@ -41,6 +37,7 @@ public class GamesServlet extends BaseServletClass {
 	private static final String HISTORY = "history";
 	private static final String ENROLL = "enroll";
 	private static final String SHOWBYSKILL = "showGamesBySkill";
+	private static final String SHOW_BY_TAG = "showGamesByTag";
 	private static final String GETALLTAGS = "getAllTags";
 	private static final String SAVE_RESULT = "saveResult";
 
@@ -64,6 +61,8 @@ public class GamesServlet extends BaseServletClass {
 				.getDataStoreMgr().getUserGameDataStore();
 		TagDataStoreI TDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getTagDataStore();
+		ApplicationContext.getApplicationContext();
+		GamesMgr gameMgr = ApplicationContext.getGamesMgr();
 		String action = request.getParameter("action");
 		/*
 		 * Show Games on Games page
@@ -85,6 +84,9 @@ public class GamesServlet extends BaseServletClass {
 				JSONArray jsonArray = GamesMgr.GetJSON(games);
 				response.getWriter().print(jsonArray.toString());
 			}
+		} else if (action.equals(SHOW_BY_TAG)) {
+			JSONArray jsonArray = gameMgr.getGamesByTag(request, response);
+			response.getWriter().print(jsonArray.toString());
 		}
 		/*
 		 * Get All Tags to enable search

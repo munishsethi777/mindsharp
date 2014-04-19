@@ -8,9 +8,35 @@
   		<Script>
   			getGames("all");
   			getAllTags();
+			var skillType = "all";
   			function getGames(skillName){
+				skillType = skillName
   				$(".games").html("<img src='images/loading.gif'/>");
   				$.getJSON('Games?action=showGamesBySkill&skill='+ skillName,function(data){
+  					$(".games").html("");
+  					$.each(data,function(key,value){
+  						var gamesDiv = "";
+  						gamesDiv += "<div class='ui-widget-header gameDiv'>";
+  						gamesDiv += "<a href='Games?action=showGame&id="+ value.seq +"'>";
+  						gamesDiv += "<img height='225px' width='300px' src='images/games/small/"+ value.seq +".jpg'></a>";
+  						gamesDiv += value.gameName;
+  						gamesDiv += "<br>Tags:";
+  						$.each(value.tags,function(key,value){
+  							gamesDiv += value +" ";
+  						});
+  						gamesDiv += "</div>";
+  						$(".games").append(gamesDiv);
+  					});
+  				}).error(function(e) {
+  					location.reload();
+  				});
+  				
+  			}
+			//Later on i will make these methods common. For now its working. --  Baljeet
+			
+			function getGamesByTags(tagSeq){
+  				$(".games").html("<img src='images/loading.gif'/>");
+  				$.getJSON('Games?action=showGamesByTag&id='+ tagSeq + '&skill='+ skillType,function(data){
   					$(".games").html("");
   					$.each(data,function(key,value){
   						var gamesDiv = "";
@@ -37,7 +63,7 @@
   					$.each(data,function(key,value){
   						var gamesDiv = "";
   						gamesDiv += "<div style='padding:3px 6px 3px 6px;float:left;background:white;margin:3px 6px 3px 6px;border:#BBB solid thin'>";
-  						gamesDiv += "<a href='Games?action=showGame&id="+ value.tag +"'>";
+  						gamesDiv += "<a href='javascript:getGamesByTags(" + value.seq + ")'>";
   						gamesDiv += value.tag + "</a>";
   						gamesDiv += "</div>";
   						$(".tags").append(gamesDiv);

@@ -1,16 +1,26 @@
 package com.satya.Managers;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import com.satya.ApplicationContext;
+import com.satya.IConstants;
 import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.Tag;
 import com.satya.BusinessObjects.User;
+import com.satya.Persistence.GamesDataStoreI;
 import com.satya.enums.GameSkillType;
 
 public class GamesMgr {
+
+	private static final String TAG_SEQ_IS_NULL = "Tag Seq is null";
+	private static final String SKILL_TYPE_IS_NULL = "SkillType is null";
 
 	public static JSONArray GetJSON(List<Game> games) {
 		JSONArray jsonArray = new JSONArray();
@@ -32,7 +42,7 @@ public class GamesMgr {
 				jsonArray.put(json);
 			}
 		} catch (Exception e) {
-
+			throw new RuntimeException(e);
 		}
 		return jsonArray;
 	}
@@ -50,6 +60,32 @@ public class GamesMgr {
 
 		}
 		return jsonArray;
+	}
+
+	public JSONArray getGamesByTag(HttpServletRequest request,
+			HttpServletResponse response) {
+		GamesDataStoreI GDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getGamesDataStore();
+		String tagSeqStr = (String) request.getParameter("id");
+		String skillType = (String) request.getParameter("skill");
+		List<Game> games = new ArrayList<Game>();
+		if (skillType == null || skillType.equals(IConstants.BLANK)) {
+			throw new RuntimeException(SKILL_TYPE_IS_NULL);
+		}
+		long tagSeq = 0;
+		if (tagSeqStr != null && !tagSeqStr.equals(IConstants.BLANK)) {
+			tagSeq = Long.parseLong(tagSeqStr);
+		} else {
+			throw new RuntimeException(TAG_SEQ_IS_NULL);
+		}
+		if (skillType.equals("all")) {
+			games = GDS.findByTag(tagSeq);
+		} else {
+			games = GDS.findByTagAndSkill(tagSeq, skillType);
+		}
+
+		JSONArray gamesJson = GetJSON(games);
+		return gamesJson;
 	}
 
 	public JSONObject getAvailableSkills(User user) {
