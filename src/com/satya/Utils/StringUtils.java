@@ -18,4 +18,12 @@ public class StringUtils {
 		}
 		return sb.toString();
 	}
+
+	public static boolean checkEmpty(String str) {
+		boolean isNull = true;
+		if (str != null && !str.trim().equals("")) {
+			isNull = false;
+		}
+		return isNull;
+	}
 }

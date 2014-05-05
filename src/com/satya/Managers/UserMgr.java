@@ -22,9 +22,11 @@ import org.json.JSONObject;
 import com.satya.ApplicationContext;
 import com.satya.IConstants;
 import com.satya.BusinessObjects.Game;
+import com.satya.BusinessObjects.Organization;
 import com.satya.BusinessObjects.Promotion;
 import com.satya.BusinessObjects.User;
 import com.satya.BusinessObjects.UserGame;
+import com.satya.Persistence.OrganizationDataStoreI;
 import com.satya.Persistence.PromotionsDataStoreI;
 import com.satya.Persistence.UserDataStoreI;
 import com.satya.Persistence.UserGameDataStoreI;
@@ -245,6 +247,36 @@ public class UserMgr {
 	// response);
 	//
 	// }
+
+	public void setOrgaziationOnUser(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		String orgSeqStr = request.getParameter("seq");
+		List<String> errorMsgs = new ArrayList<String>();
+		long orgSeq = 0;
+		try {
+			if (orgSeqStr != null && !orgSeqStr.equals(IConstants.BLANK)) {
+				orgSeq = Long.parseLong(orgSeqStr);
+			}
+			UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+					.getDataStoreMgr().getUserDataStore();
+			OrganizationDataStoreI ods = ApplicationContext
+					.getApplicationContext().getDataStoreMgr()
+					.getOrganizationDataStore();
+			Organization org = ods.findBySeq(orgSeq);
+			User user = UDS.findBySeq(ApplicationContext
+					.getApplicationContext().getLoggedinUser(request).getSeq());
+			user.setOrganization(org);
+			UDS.updateOrganization(user);
+			HttpSession session = request.getSession(true);
+			session.setAttribute(IConstants.loggedInUser, user);
+			request.setAttribute(IConstants.loggedInUser, user);
+		} catch (Exception e) {
+			errorMsgs.add(e.getMessage());
+		}
+		request.getRequestDispatcher("myAccount.jsp")
+				.forward(request, response);
+	}
+
 	public void changePassword(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		List<String> errorMsgs = new ArrayList<String>();

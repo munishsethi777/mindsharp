@@ -15,7 +15,7 @@
 	            	 $(".orgName").text(ui.item.value);
 	                 $(".orgAddress").text(ui.item.orgAddress);
 	                 $(".orgState").text(ui.item.orgState);
-	                 $(".orgCountry").text(ui.item.orgCountry);
+	                 $("#orgSeq").val(ui.item.seq);
 	             }
 		    });
 		}
@@ -44,7 +44,7 @@
 	    	});
 	    });
 	    $.getJSON("Organization?action=getOrganizationTypesJSON",function(data){
-	    	$(".orgType").html("<select class='orgTypeSel' onChange='orgTypeChange()'></select>");
+	    	$(".orgType").html("<select name='orgTypeSelect' class='orgTypeSel' onChange='orgTypeChange()'></select>");
 	    	$.each(data,function(key,value){
 	    		
 	    		$('.orgTypeSel')
@@ -168,36 +168,57 @@
     		</tr>
     	</table>
     	
-   	<%if(loggedinUser.getOrganization() != null){%>
+		<%
+			boolean hasOrg = true;
+			if(loggedinUser.getOrganization() == null){
+				hasOrg = false;
+			}
+		%>
+   
    		<p style="margin-top:10px;">Organization Details</p>
    		<table width="500px" style="border:solid silver thin;margin-top:10px;">
     		<tr>
-    			<td class="gameLabelTD">Organization Type</td>
-    			<td class="gameValueTD orgType"><%=loggedinUser.getOrganization().getType().key() %> <div class="orgTypeStream"></div></td>
+    			<td class="gameLabelTD">Organization Names</td>
+					<input type="hidden" id="orgSeq" name="seq"/>
+					<td class="gameValueTD"><input id="organ" /></td>	
+					<td class="gameValueTD"><input type="button" value="Save" id="saveOrg"/>					
+					<td class="gameValueTD"><input type="button" value="Add" id="showOrgButton"/></td>				
     		</tr>
-    		<tr>
-    			<td class="gameLabelTD">Organization Name</td>
-    			<td class="gameValueTD"><input id="organ" /></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">Organization</td>
-    			<td class="gameValueTD orgName"><%=loggedinUser.getOrganization().getName() %></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">Address</td>
-    			<td class="gameValueTD orgAddress"><%=loggedinUser.getOrganization().getAddress() %></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">State</td>
-    			<td class="gameValueTD orgState"><%=loggedinUser.getOrganization().getState() %></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">Country</td>
-    			<td class="gameValueTD orgCountry"><%=loggedinUser.getOrganization().getCountry() %></td>
-    		</tr>
+			<tr>
+	    			<td class="gameLabelTD">Organization Type</td>
+	    			<td class="gameValueTD orgt"><%if(hasOrg){%><%=loggedinUser.getOrganization().getType().key()%><%}%></td>
+				</tr>
+			<%if(hasOrg){%>
+				
+	    		<tr>
+	    			<td class="gameLabelTD">Organization</td>				
+					<td class="gameValueTD orgName"><%=loggedinUser.getOrganization().getName() %></td>
+	    		</tr>
+			
+	    		<tr>
+	    			<td class="gameLabelTD">Address</td>
+	    			<td class="gameValueTD orgAddress"><%=loggedinUser.getOrganization().getAddress() %></td>
+	    		</tr>
+	    		<tr>
+	    			<td class="gameLabelTD">State</td>
+	    			<td class="gameValueTD orgState"><%=loggedinUser.getOrganization().getState() %></td>
+	    		</tr>
+	    		<tr>
+	    			<td class="gameLabelTD">Country</td>
+	    			<td class="gameValueTD orgCountry"><%=loggedinUser.getOrganization().getCountry() %></td>
+	    		</tr>
+     		<%}%>
+ 
     	</table>
-   		<% }%>
-    	
+		<script>
+			$("#saveOrg").click(function(){
+				orgSeq = $("#orgSeq").val();
+				$.post("User?action=setOrgOnUser&seq=" + orgSeq, function(json){
+					 location.reload();
+				});
+			});
+		</script>
+    	<%@ include file="organizationFormInclude.jsp"%>
     	<form action="User?action=changePassword" method="POST">
    		<p style="margin-top:10px;">Change Password</p>
    		<table width="500px" style="border:solid silver thin;margin-top:10px;">

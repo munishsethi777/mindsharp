@@ -2,30 +2,24 @@ package com.satya.Servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.json.JSONObject;
 
 import com.satya.ApplicationContext;
 import com.satya.IConstants;
-import com.satya.BusinessObjects.GameResult;
 import com.satya.BusinessObjects.User;
 import com.satya.Managers.GameResultMgr;
 import com.satya.Managers.GamesMgr;
 import com.satya.Managers.UserMgr;
-import com.satya.Persistence.GameResultDataStoreI;
 import com.satya.Persistence.UserDataStoreI;
-import com.satya.enums.GameSkillType;
 
 public class UserServlet extends BaseServletClass {
 
@@ -41,6 +35,8 @@ public class UserServlet extends BaseServletClass {
 	private static final String GET_MY_SKILLS = "getMySkills";
 	private static final String SAVE_MY_SKILLS = "saveMySkills";
 	private static final String UPLOAD_IMAGE = "uploadImage";
+	private static final String ADD_ORGANIZATION = "addOrganization";
+	private static final String SET_ORG_ON_USER = "setOrgOnUser";
 
 	Logger log = Logger.getLogger(UserServlet.class.getName());
 
@@ -79,14 +75,14 @@ public class UserServlet extends BaseServletClass {
 					.getApplicationContext().getGameResultsMgr();
 
 			if (action.equals(MYACCOUNT)) {
-				userMgr.updateAccountInfo(request,response);
+				userMgr.updateAccountInfo(request, response);
 				request.getRequestDispatcher("myAccount.jsp").forward(request,
-						response);				
+						response);
 			} else if (action.equals(LOGOUT)) {
 				request.getSession().removeAttribute(IConstants.loggedInUser);
 				request.getRequestDispatcher("index.jsp").forward(request,
 						response);
-				
+
 			} else if (action.equals(SCORECHARTJSON)) {
 				String chartString = gameResultMgr
 						.getScoreChartJSON(getLoggedinUser(request).getSeq());
@@ -108,8 +104,11 @@ public class UserServlet extends BaseServletClass {
 						getLoggedinUser(request), request);
 				response.getWriter().print(json.toString());
 
-			}
-			else {
+			} else if (action.equals(ADD_ORGANIZATION)) {
+				JSONObject json = ApplicationContext.getApplicationContext()
+						.getOrganizationMgr().addOrgaziation(request, response);
+				response.getWriter().print(json.toString());
+			} else {
 				request.getRequestDispatcher("index.jsp").forward(request,
 						response);
 			}
@@ -129,19 +128,21 @@ public class UserServlet extends BaseServletClass {
 			if (action.equals(SIGNUP)) {
 				ApplicationContext.getApplicationContext().getUserMgr()
 						.signup(request, response);
-			
-			}else if(action.equals(LOGIN)) {
+
+			} else if (action.equals(LOGIN)) {
 				ApplicationContext.getApplicationContext().getUserMgr()
 						.login(request, response);
-			
-			}else if(action.equals(CHANGEPASSWORD)) {
+
+			} else if (action.equals(CHANGEPASSWORD)) {
 				ApplicationContext.getApplicationContext().getUserMgr()
 						.changePassword(request, response);
-			}
-			else if (action.equals(UPLOAD_IMAGE)) {
+			} else if (action.equals(UPLOAD_IMAGE)) {
 				ApplicationContext.getApplicationContext().getUserMgr()
-				.uploadImage(request, response);
+						.uploadImage(request, response);
 
+			} else if (action.equals(SET_ORG_ON_USER)) {
+				ApplicationContext.getUserMgr().setOrgaziationOnUser(request,
+						response);
 			}
 		}
 

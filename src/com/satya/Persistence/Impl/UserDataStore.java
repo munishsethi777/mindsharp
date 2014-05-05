@@ -38,7 +38,7 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 	private final static String UPDATE_PASSWORD = "Update users set password = ? where seq = ?";
 	private final static String UPDATE_IMAGE = "Update users set imagename = ? where seq = ?";
 	private final static String UPDATE_MY_SKILLS = "Update users set myskills = ? where seq = ?";
-
+	private final static String UPDATE_ORG = "update users set orgseq = ? where seq = ?";
 	private PersistenceMgr persistenceMgr;
 
 	public UserDataStore(PersistenceMgr psmgr) {
@@ -198,6 +198,13 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 	public void changePassword(User user) {
 		Object[] params = new Object[] { user.getPassword(), user.getSeq() };
 		persistenceMgr.excecuteUpdate(UPDATE_PASSWORD, params);
+	}
+
+	@Override
+	public void updateOrganization(User user) {
+		Object[] params = new Object[] { user.getOrganization().getSeq(),
+				user.getSeq() };
+		persistenceMgr.excecuteUpdate(UPDATE_ORG, params);
 	}
 
 	@Override
