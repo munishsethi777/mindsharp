@@ -40,6 +40,7 @@ public class GamesServlet extends BaseServletClass {
 	private static final String SHOW_BY_TAG = "showGamesByTag";
 	private static final String GETALLTAGS = "getAllTags";
 	private static final String SAVE_RESULT = "saveResult";
+	private static final String SHOW_RECOMEMDED_GAMES = "getGamesBySkills";
 
 	public GamesServlet() {
 		super();
@@ -87,6 +88,8 @@ public class GamesServlet extends BaseServletClass {
 		} else if (action.equals(SHOW_BY_TAG)) {
 			JSONArray jsonArray = gameMgr.getGamesByTag(request, response);
 			response.getWriter().print(jsonArray.toString());
+		} else if (action.equals(SHOW_RECOMEMDED_GAMES)) {
+			gameMgr.getGamesBySkills(request, response);
 		}
 		/*
 		 * Get All Tags to enable search
@@ -147,7 +150,7 @@ public class GamesServlet extends BaseServletClass {
 				.getDataStoreMgr().getGamesDataStore();
 		UserGameDataStoreI UGDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getUserGameDataStore();
-
+		GamesMgr gameMgr = ApplicationContext.getGamesMgr();
 		GameResultMgr gameResultMgr = ApplicationContext
 				.getApplicationContext().getGameResultsMgr();
 
@@ -163,6 +166,8 @@ public class GamesServlet extends BaseServletClass {
 		} else if (action.equals(SHOWGAME)) {
 			ShowGamePage(request, response);
 
+		} else if (action.equals(SHOW_RECOMEMDED_GAMES)) {
+			gameMgr.getGamesBySkills(request, response);
 		} else {
 			/*
 			 * Called when game loads to get game path from server.

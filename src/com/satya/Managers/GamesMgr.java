@@ -1,10 +1,13 @@
 package com.satya.Managers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -15,6 +18,7 @@ import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.Tag;
 import com.satya.BusinessObjects.User;
 import com.satya.Persistence.GamesDataStoreI;
+import com.satya.Persistence.UserDataStoreI;
 import com.satya.enums.GameSkillType;
 
 public class GamesMgr {
@@ -103,5 +107,25 @@ public class GamesMgr {
 
 		}
 		return json;
+	}
+
+	public void getGamesBySkills(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		GamesDataStoreI GDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getGamesDataStore();
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getSeq());
+		List<Game> games = new ArrayList<Game>();
+		for (GameSkillType skillType : user.getMySkills()) {
+			List<Game> gamesList = GDS.findBySkill(skillType);
+			games.addAll(gamesList);
+		}
+		HttpSession session = request.getSession(true);
+		session.setAttribute("games", games);
+		request.setAttribute("games", games);
+		request.getRequestDispatcher("dashboard.jsp")
+				.forward(request, response);
 	}
 }

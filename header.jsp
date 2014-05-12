@@ -20,6 +20,7 @@
  		<table width="100%" style="border:thin silver solid;margin-bottom:10px" cellspacing="3" cellpadding="3">
 		  <tr>
 		    <!-- <td class="ui-widget-header"><a href="Games?action=showGames">All Games</a></td> -->
+			 <td class="ui-widget-header"><a href="Games?action=getGamesBySkills">Dashbord</a></td>
 		    <td class="ui-widget-header"><a href="games.jsp">All Games</a></td>
 		    <% if(loggedinUser.getIsLimited()){ %>
 		    	<td class="ui-widget-header"><a href="Games?action=showMyGames">My Games</a></td>
