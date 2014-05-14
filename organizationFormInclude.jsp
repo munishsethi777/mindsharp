@@ -1,6 +1,3 @@
-<%@ include file="includeJars.jsp" %>
-<%@ include file="includeJS.jsp" %>	
-
 	<div id="divdeps">
 	  <form  id="orgForm" name="orgForm" method="POST">	  
 		<table width="500px" style="border:solid silver thin;margin-top:10px;">

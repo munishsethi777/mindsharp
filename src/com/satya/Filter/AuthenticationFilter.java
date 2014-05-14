@@ -25,15 +25,29 @@ import com.satya.BusinessObjects.User;
 public class AuthenticationFilter implements Filter {
 
 	private List<String> publicURLs = null;
+	private List<String> publicExtensions = null;
     public AuthenticationFilter() {
     	publicURLs = new ArrayList<String>();
-    	
     	publicURLs.add("index.jsp");
     	publicURLs.add("header.jsp");
     	publicURLs.add("includeJars.jsp");
     	publicURLs.add("includeJS.jsp");
     	publicURLs.add("User");
     	publicURLs.add("signup.jsp");
+    	publicURLs.add("login.jsp");
+    	
+    	publicExtensions = new ArrayList<String>();
+    	publicExtensions.add("html");
+    	publicExtensions.add("css");
+    	publicExtensions.add("js");
+    	publicExtensions.add("swf");
+    	publicExtensions.add("txt");
+    	publicExtensions.add("jpg");
+    	publicExtensions.add("gif");
+    	publicExtensions.add("png");
+    	publicExtensions.add("woff");
+    	publicExtensions.add("ttf");
+    	publicExtensions.add("svg");
     }
     Logger log = Logger.getLogger(AuthenticationFilter.class);
 	/**
@@ -57,7 +71,7 @@ public class AuthenticationFilter implements Filter {
 				pageUrl = pageUrl.substring(pageUrl.lastIndexOf("/")+1, pageUrl.length());
 				pageExtension = pageUrl.substring(pageUrl.lastIndexOf(".")+1);
 			}
-			if(pageUrl!=null && !pageExtension.equals("html") && !pageExtension.equals("css") && !pageExtension.equals("js")){
+			if(pageUrl!=null && !publicExtensions.contains(pageExtension)){
 				pageUrl = pageUrl.substring(pageUrl.lastIndexOf("/")+1, pageUrl.length());
 				if(!pageUrl.equals("") && !publicURLs.contains(pageUrl)){
 					//if its not a public URL, then check if user logged in or not
@@ -68,7 +82,7 @@ public class AuthenticationFilter implements Filter {
 						setSourceURL(req);
 						errorMsgs.add(IConstants.err_pleaseLogin);
 						request.setAttribute(IConstants.errMessages, errorMsgs);
-						request.getRequestDispatcher("index.jsp").forward(request, response);
+						request.getRequestDispatcher("login.jsp").forward(request, response);
 					}
 				}else{
 					chain.doFilter(request, response);

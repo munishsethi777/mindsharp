@@ -127,13 +127,14 @@
 				</div>
 			</div>
 			<!--  RECENT GAMES PLAYED WIDGET ENDS -->
-			
-			
+
+			<div style="clear:both;padding:15px"></div>
+					
 			<!--  LEADERBOARD AREA STARTS -->
-			<div id="recentGamesPlayedWidget" class="col-sm-6 widget-container-col ui-sortable">
+			<div id="recentGamesPlayedWidget" class="col-sm-12 widget-container-col ui-sortable">
 				<div class="widget-box">
 					<div class="widget-header">
-						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> RECENTLY PLAYED GAMES</h4>
+						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> LEADERBOARD</h4>
 					</div>
 					<div class="widget-body">
 						<div class="widget-main padding-6">
@@ -141,8 +142,10 @@
 					</div>
 				</div>
 			</div>
-						
 			<!--  LEADERBOARD AREA ENDS -->
+			
+						
+
 		</div>
 	</div>
 </body>
