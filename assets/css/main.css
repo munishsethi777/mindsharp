@@ -138,7 +138,6 @@ a:after {
 	padding: 0;
 	-webkit-box-shadow: none;
 	box-shadow: none;
-	margin: 3px 0;
 	border: 1px solid #CCC;
 }
 .widget-header {
@@ -168,6 +167,25 @@ a:after {
 }
 .widget-main {
 	padding: 12px;
+}
+.widget-body h4{
+	color:#336699;
+}
+.widget-body h5{
+	color:grey;
+}
+.widget-tags{
+	margin:5px;display:block
+}
+.widget-body .suggestedGameBlock{
+	vertical-align: top;
+	border-bottom: 1px silver solid;
+}
+.widget-gameimage{
+	float:left;width:30%;margin:10px
+}
+.widget-skills{
+	margin:0px !important;
 }
 /*TILT*/
 .tilt {

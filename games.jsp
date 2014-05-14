@@ -1,13 +1,16 @@
 <%@ include file="includeJars.jsp" %>
 <%@ include file="includeJS.jsp" %>
-  	<html>
-  	<head>
-  		<Style>
-  			
-  		</Style>
+<%	User loggedinUser = (User)session.getAttribute("loggedInUser"); %>
+<html>
+<head>
   		<Script>
+  		$(document).ready(function() {
+  			setActiveButton("games");
   			getGames("all");
   			getAllTags();
+  		});
+
+  			
 			var skillType = "all";
   			function getGames(skillName){
 				skillType = skillName
@@ -78,7 +81,7 @@
   	</head> 
   	<body>
   	<div class="bodyDiv" align="center" style="margin:auto">
-  	<%@ include file="header.jsp" %>
+  	<%@ include file="headerPublic.jsp" %>
   	
   	<%	List<Game> games =(List<Game>) request.getAttribute("games"); %>
 	  	<Div class="skillDivs">

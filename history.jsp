@@ -5,9 +5,10 @@
   	<head>
   		<script type="text/javascript">
   		$(document).ready(function() {
+  			setActiveButton("gamesHistory");
 	  		var chart = new Highcharts.Chart({
 	  		    chart: {
-	  		        renderTo: 'container',
+	  		        renderTo: 'graph',
 	  		      	type: 'column'
 	  		    },
 	  		  	xAxis: {
@@ -27,13 +28,15 @@
          
         </script>
   	</head> 
-  	<body>
-  	<div class="bodyDiv" align="center" style="margin:auto">
-  		<%@ include file="header.jsp" %> 
+  	<body class="default">
+  	
+  		<%@ include file="headerPrivate.jsp" %> 
 	  <%	
 	  if(request.getAttribute("gameResults")!=null){
-  		List<GameResult> gameResults =(List<GameResult>) request.getAttribute("gameResults"); %>   
-    <table align="left" width="800px" border="0" style="border:solid silver thin">
+  		List<GameResult> gameResults =(List<GameResult>) request.getAttribute("gameResults"); %>
+  	<div id="body">
+  		<div class="container">   
+    	<table align="left" border="0" style="border:solid silver thin">
  		<c:if test="${gameResults != null}">
  			<tr>
  				<th align="left" class="ui-widget-header" style="font-size:12px;">Game</th>
@@ -62,6 +65,8 @@
     </table>
     <%} %>
     
-   <div id="container" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+   <div id="graph" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+   	</div>
+   </div>
     </body>
 </html>

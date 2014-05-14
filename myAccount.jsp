@@ -1,9 +1,11 @@
 <%@ include file="includeJars.jsp" %>
 <%@ include file="includeJS.jsp" %>
-   	<html>
+<%	User loggedinUser = (User)session.getAttribute("loggedInUser"); %>
+<html>
   	<script>
      $(function() {
 	 	resetAutocomplete($(".orgType").val());
+	 	setActiveButton("myAccount");
      });
      $(".orgTypeSel").change(resetAutocomplete);
 	 function resetAutocomplete(orgType) {
@@ -85,11 +87,26 @@
 		    	});
 		    });
 	    }
+		$("#saveOrg").click(function(){
+			orgSeq = $("#orgSeq").val();
+			$.post("User?action=setOrgOnUser&seq=" + orgSeq, function(json){
+				 location.reload();
+			});
+		});
      </script>
-  	<body>
-  	<div class="bodyDiv" style="margin:auto">
-  	
-  	<%@ include file="header.jsp" %> 
+	<style>
+    	#sortable1, #sortable2 {height:40px; list-style-type: none; margin: 0; padding: 5px 0px 5px 0px; float: left; background:#EEE;border:thin silver solid ;width:100%;text-transform: uppercase;}
+    	#sortable1 li, #sortable2 li {cursor:pointer; margin: 5px; padding: 5px; font-size: 1.2em; float:left; }
+    	.ui-state-highlight { height: 20px;width:80px;}
+    	.ui-autocomplete-loading {background: white url('images/loadingsmall.gif') right center no-repeat;}
+    </style>
+
+<body>
+
+<%@ include file="headerPrivate.jsp" %>
+ 
+<div id="body" >
+  	<div class ="container">
   	<%	List<String> errMessages =(List<String>) request.getAttribute("errMessages"); %>
 	<c:if test="${errMessages != null}">
 			<p style="padding:10px 10px 10px 10px;" class="ui-state-error">
@@ -107,16 +124,59 @@
 			</p>
 	</c:if>
 	<style>
-    	#sortable1, #sortable2 {height:40px; list-style-type: none; margin: 0; padding: 5px 0px 5px 0px; float: left; background:#EEE;border:thin silver solid ;width:100%;text-transform: uppercase;}
-    	#sortable1 li, #sortable2 li {cursor:pointer; margin: 5px; padding: 5px; font-size: 1.2em; float:left; }
-    	.ui-state-highlight { height: 20px;width:80px;}
-    	.ui-autocomplete-loading {background: white url('images/loadingsmall.gif') right center no-repeat;}
-    </style>
-    <script>
-	    
-	    
-    </script>
-	<table width="670px" style="border:solid silver thin;float:right">
+		.sidebar {
+			width: 190px;
+			float: left;
+			position: static;
+			padding-left: 0;
+			padding-right: 0;
+			}
+		.main-content {
+			margin-left: 190px;
+			min-height: 100%;
+			padding-left: 20px;
+		}
+		.sidebar .nav-list>li {
+			border-color: #e5e5e5;
+			display: block;
+			position: relative;
+			float: none;
+			padding: 0;
+			border-style: solid;
+			border-width: 1px 0 0;
+		}
+		.sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus {
+			background-color:#F8F8F8 !important;	
+		}
+
+	</style>
+	<div id = "sidebar" class="sidebar">
+		<ul class="nav nav-list" style="top: 0px;">
+			<li class="active">
+				<a href="#"><i class="menu-icon fa fa-user"></i>
+					<span class="menu-text"> Account Details </span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#"><i class="menu-icon fa fa-puzzle-piece"></i>
+					<span class="menu-text"> Select Skills </span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#"><i class="menu-icon fa fa-gear"></i>
+					<span class="menu-text"> Change Password </span>
+				</a>
+			</li>
+			<li class="active">
+				<a href="#"><i class="menu-icon fa fa-gamepad"></i>
+					<span class="menu-text"> Upgrade Account </span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class = "main-content">
+	<table style="border:solid silver thin">
    		<tr>
    			<td style="padding:6px;">
    					<div style="border:solid silver thin;padding:5px;">
@@ -144,39 +204,39 @@
    		</tr>
     </table>
     	
-	
-  		<table width="500px" style="border:solid silver thin">
-    		<tr>
-    			<td class="gameLabelTD">Full Name</td>
-    			<td class="gameValueTD"><%=loggedinUser.getFullName() %></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">Email Id</td>
-    			<td class="gameValueTD"><%=loggedinUser.getEmailId() %></td>
-    		</tr>
-    		<tr>
-    			<td class="gameLabelTD">User Name</td>
-    			<td class="gameValueTD"><%=loggedinUser.getUserName() %></td>
-    		</tr>
-			<tr>
-    			<td class="gameLabelTD">User Badges</td>
-    			<td class="gameValueTD"><%=loggedinUser.getMySkillBadges() %></td>
-    		</tr>
-			<tr>
-    			<td class="gameLabelTD">User Status</td>
-    			<td class="gameValueTD"><%=loggedinUser.getStatus()%></td>
-    		</tr>
-    	</table>
+
+	<table style="border:solid silver thin">
+   		<tr>
+   			<td class="gameLabelTD">Full Name</td>
+   			<td class="gameValueTD"><%=loggedinUser.getFullName() %></td>
+   		</tr>
+   		<tr>
+   			<td class="gameLabelTD">Email Id</td>
+   			<td class="gameValueTD"><%=loggedinUser.getEmailId() %></td>
+   		</tr>
+   		<tr>
+   			<td class="gameLabelTD">User Name</td>
+   			<td class="gameValueTD"><%=loggedinUser.getUserName() %></td>
+   		</tr>
+		<tr>
+   			<td class="gameLabelTD">User Badges</td>
+   			<td class="gameValueTD"><%=loggedinUser.getMySkillBadges() %></td>
+   		</tr>
+		<tr>
+   			<td class="gameLabelTD">User Status</td>
+   			<td class="gameValueTD"><%=loggedinUser.getStatus()%></td>
+   		</tr>
+   	</table>
     	
-		<%
-			boolean hasOrg = true;
-			if(loggedinUser.getOrganization() == null){
-				hasOrg = false;
-			}
-		%>
+	<%
+		boolean hasOrg = true;
+		if(loggedinUser.getOrganization() == null){
+			hasOrg = false;
+		}
+	%>
    
    		<p style="margin-top:10px;">Organization Details</p>
-   		<table width="500px" style="border:solid silver thin;margin-top:10px;">
+   		<table style="border:solid silver thin;margin-top:10px;">
     		<tr>
     			<td class="gameLabelTD">Organization Names</td>
 					<input type="hidden" id="orgSeq" name="seq"/>
@@ -187,7 +247,7 @@
 			<tr>
 	    			<td class="gameLabelTD">Organization Type</td>
 	    			<td class="gameValueTD orgt"><%if(hasOrg){%><%=loggedinUser.getOrganization().getType().key()%><%}%></td>
-				</tr>
+			</tr>
 			<%if(hasOrg){%>
 				
 	    		<tr>
@@ -210,18 +270,11 @@
      		<%}%>
  
     	</table>
-		<script>
-			$("#saveOrg").click(function(){
-				orgSeq = $("#orgSeq").val();
-				$.post("User?action=setOrgOnUser&seq=" + orgSeq, function(json){
-					 location.reload();
-				});
-			});
-		</script>
+
     	<%@ include file="organizationFormInclude.jsp"%>
     	<form action="User?action=changePassword" method="POST">
    		<p style="margin-top:10px;">Change Password</p>
-   		<table width="500px" style="border:solid silver thin;margin-top:10px;">
+   		<table style="border:solid silver thin;margin-top:10px;">
     		<tr>
     			<td class="gameLabelTD">Current Pass:</td>
     			<td class="gameValueTD"><input type="password" name="currentPassword"/></td>
@@ -245,9 +298,9 @@
 		</Form>
 		<form action="User?action=uploadImage" method="POST" enctype="multipart/form-data">
 			<p style="margin-top:10px;">Upload Image</p>
-			<table width="500px" style="border:solid silver thin;margin-top:10px;">
+			<table style="border:solid silver thin;margin-top:10px;">
 	    		<tr>
-					<td class="gameLabelTD"><img src="images\userImages\<%=loggedinUser.getImageName()%>"</td>
+					<td class="gameLabelTD"><img src="images\userImages\<%=loggedinUser.getImageName()%>"/></td>
 	    			<td class="gameValueTD">
 							<input type="file" name="attachement" size="50">
 					</td>
@@ -262,6 +315,10 @@
     		</tr>
 	    	</table>
     	</form>	
+    	</div>
    </Div>
+   </div>
+   <%@ include file="footerPublic.jsp"%>
+
     </body>
 </html>
