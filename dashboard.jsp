@@ -1,4 +1,4 @@
-<<<<<<< Updated upstream
+
 <%@ include file="includeJars.jsp"%>
 <%@ include file="includeJS.jsp"%>
 <html>
