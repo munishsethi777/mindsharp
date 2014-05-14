@@ -62,7 +62,7 @@ public class UserServlet extends BaseServletClass {
 		if (getLoggedinUser(request) == null) {
 			errorMsgs.add(IConstants.err_pleaseLogin);
 			request.setAttribute(IConstants.errMessages, errorMsgs);
-			request.getRequestDispatcher("index.jsp")
+			request.getRequestDispatcher("login.jsp")
 					.forward(request, response);
 		} else {
 			UserDataStoreI UDS = ApplicationContext.getApplicationContext()
@@ -80,7 +80,7 @@ public class UserServlet extends BaseServletClass {
 						response);
 			} else if (action.equals(LOGOUT)) {
 				request.getSession().removeAttribute(IConstants.loggedInUser);
-				request.getRequestDispatcher("index.jsp").forward(request,
+				request.getRequestDispatcher("login.jsp").forward(request,
 						response);
 
 			} else if (action.equals(SCORECHARTJSON)) {
@@ -109,7 +109,7 @@ public class UserServlet extends BaseServletClass {
 						.getOrganizationMgr().addOrgaziation(request, response);
 				response.getWriter().print(json.toString());
 			} else {
-				request.getRequestDispatcher("index.jsp").forward(request,
+				request.getRequestDispatcher("login.jsp").forward(request,
 						response);
 			}
 		}

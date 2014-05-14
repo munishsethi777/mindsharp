@@ -47,7 +47,7 @@ public class UserMgr {
 		if (user == null) {
 			errorMsgs.add(IConstants.err_invalidUsernamePassword);
 			request.setAttribute(IConstants.errMessages, errorMsgs);
-			request.getRequestDispatcher("index.jsp")
+			request.getRequestDispatcher("login.jsp")
 					.forward(request, response);
 		} else {
 			log.debug("user logged in successfully");
