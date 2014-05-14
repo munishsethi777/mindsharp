@@ -143,10 +143,12 @@
 				</div>
 			</div>
 			<!--  LEADERBOARD AREA ENDS -->
-			
+			<div style="clear:both;padding:15px"></div>
 						
 
 		</div>
 	</div>
+<%@ include file="footerPublic.jsp"%>
+
 </body>
 </html>

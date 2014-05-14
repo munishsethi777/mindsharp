@@ -6,7 +6,7 @@
  		<%@ include file="headerPrivate.jsp" %>
  		<script>
  		$(document).ready(function() {
-  			setActiveButton("games");
+  			setActiveButton("myGames");
   		}); 
  		</script>
 </head> 

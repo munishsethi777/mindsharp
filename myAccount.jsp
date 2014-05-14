@@ -123,33 +123,7 @@
 			</c:forEach>
 			</p>
 	</c:if>
-	<style>
-		.sidebar {
-			width: 190px;
-			float: left;
-			position: static;
-			padding-left: 0;
-			padding-right: 0;
-			}
-		.main-content {
-			margin-left: 190px;
-			min-height: 100%;
-			padding-left: 20px;
-		}
-		.sidebar .nav-list>li {
-			border-color: #e5e5e5;
-			display: block;
-			position: relative;
-			float: none;
-			padding: 0;
-			border-style: solid;
-			border-width: 1px 0 0;
-		}
-		.sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus {
-			background-color:#F8F8F8 !important;	
-		}
 
-	</style>
 	<div id = "sidebar" class="sidebar">
 		<ul class="nav nav-list" style="top: 0px;">
 			<li class="active">

@@ -17,7 +17,8 @@
         <div class="navbar-collapse collapse">
 	          <ul class="nav navbar-nav navbar-right">
 	            <li id="dashboard"><a href="dashboard.jsp"><i class="fa fa-tachometer"></i> DASHBOARD</a></li>
-	            <li id="games"><a href="Games?action=showMyGames"><i class="fa fa-rocket"></i> GAMES</a></li>
+	            <li id="games"><a href="Games?action=showGames"><i class="fa fa-rocket"></i> GAMES</a></li>
+	            <li id="myGames"><a href="Games?action=showMyGames"><i class="fa fa-rocket"></i> MY GAMES</a></li>
 	            <li id="gamesHistory"><a href="Games?action=history"><i class="fa fa-pencil"></i> GAMES HISTORY</a></li>
 	            <li id="myAccount">
 	            	<a href="#" class="dropdown-toggle" data-toggle="dropdown">

@@ -188,6 +188,39 @@ a:after {
 .widget-skills{
 	margin:0px !important;
 }
+/*SIDE BAR*/
+.sidebar {
+	width: 210px;
+	float: left;
+	position: static;
+	padding-left: 0;
+	padding-right: 0;
+	}
+.main-content {
+	margin-left: 210px;
+	min-height: 100%;
+	padding-left: 10px;
+}
+.sidebar .nav-list>li {
+	border-color: #e5e5e5;
+	display: block;
+	position: relative;
+	float: none;
+	padding: 0;
+	border-style: solid;
+	border-width: 1px 0 0;
+}
+.sidebar .nav > li > a:hover, .sidebar .nav > li > a:focus,.sidebar .active {
+	background-color:#F8F8F8 !important;	
+}
+.sidebar a{
+	text-align:left;
+	font-size:11pt;
+}
+
+.sidebar .menu-text{
+	padding-left:5px;
+}
 /*TILT*/
 .tilt {
   -webkit-transition: all 0.5s ease;
