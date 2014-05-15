@@ -41,6 +41,7 @@ public class GamesServlet extends BaseServletClass {
 	private static final String GETALLTAGS = "getAllTags";
 	private static final String SAVE_RESULT = "saveResult";
 	private static final String SHOW_RECOMEMDED_GAMES = "getGamesBySkills";
+	private static final String SHOW_RECENT_PLAYED_GAMES = "getLastPlayedGames";
 
 	public GamesServlet() {
 		super();
@@ -89,7 +90,12 @@ public class GamesServlet extends BaseServletClass {
 			JSONArray jsonArray = gameMgr.getGamesByTag(request, response);
 			response.getWriter().print(jsonArray.toString());
 		} else if (action.equals(SHOW_RECOMEMDED_GAMES)) {
-			gameMgr.getGamesBySkills(request, response);
+			JSONArray jsonArray = gameMgr.getGamesBySkills(request, response);
+			response.getWriter().print(jsonArray.toString());
+		} else if (action.equals(SHOW_RECENT_PLAYED_GAMES)) {
+			JSONArray jsonArray = gameMgr.getLastPlayedGamesJson(request,
+					response);
+			response.getWriter().print(jsonArray.toString());
 		}
 		/*
 		 * Get All Tags to enable search

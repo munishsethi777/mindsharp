@@ -10,6 +10,7 @@ import java.util.Map;
 import com.satya.ApplicationContext;
 import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.Tag;
+import com.satya.BusinessObjects.User;
 import com.satya.Persistence.GamesDataStoreI;
 import com.satya.Persistence.RowMapper;
 import com.satya.Persistence.TagDataStoreI;
@@ -28,6 +29,11 @@ public class GamesDataStore implements GamesDataStoreI, RowMapper {
 
 	private final static String FIND_BY_TAG_AND_SKILL = FIND_BY_TAG
 			+ " and games.skilltype = ? ";
+	private final static String FIND_LAST_PLAYED_GAMES = " SELECT games.*, tags.tag FROM gameresults"
+			+ " inner join games on games.seq = gameresults.gameseq"
+			+ " inner join gametags on gametags.gameseq = games.seq"
+			+ " inner join  tags on tags.seq =  gametags.tagseq"
+			+ " where gameresults.userseq = ? order by  gameresults.seq desc LIMIT 3";
 	private PersistenceMgr persistenceMgr;
 
 	public GamesDataStore(PersistenceMgr persistenceMgr) {
@@ -92,6 +98,15 @@ public class GamesDataStore implements GamesDataStoreI, RowMapper {
 		List<Game> games = (List<Game>) persistenceMgr.executePSQuery(
 				FIND_BY_SKILL, params, this);
 		return getUniqueGamesWithTags(games);
+	}
+
+	@Override
+	public List<Game> getLastPlayedGames(User user) {
+		Object[] params = new Object[] { user.getSeq() };
+		@SuppressWarnings("unchecked")
+		List<Game> games = (List<Game>) persistenceMgr.executePSQuery(
+				FIND_LAST_PLAYED_GAMES, params, this);
+		return games;
 	}
 
 	@Override

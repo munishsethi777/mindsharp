@@ -3,6 +3,7 @@ package com.satya.Persistence;
 import java.util.List;
 
 import com.satya.BusinessObjects.Game;
+import com.satya.BusinessObjects.User;
 import com.satya.enums.GameSkillType;
 
 public interface GamesDataStoreI {
@@ -20,4 +21,6 @@ public interface GamesDataStoreI {
 	public List<Game> findByTag(long tagSeq);
 
 	public List<Game> findByTagAndSkill(long tagSeq, String skillType);
+
+	public List<Game> getLastPlayedGames(User user);
 }

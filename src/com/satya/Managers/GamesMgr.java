@@ -7,7 +7,6 @@ import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
@@ -109,7 +108,7 @@ public class GamesMgr {
 		return json;
 	}
 
-	public void getGamesBySkills(HttpServletRequest request,
+	public JSONArray getGamesBySkills(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		GamesDataStoreI GDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getGamesDataStore();
@@ -122,10 +121,30 @@ public class GamesMgr {
 			List<Game> gamesList = GDS.findBySkill(skillType);
 			games.addAll(gamesList);
 		}
-		HttpSession session = request.getSession(true);
-		session.setAttribute("games", games);
-		request.setAttribute("games", games);
-		request.getRequestDispatcher("dashboard.jsp")
-				.forward(request, response);
+		JSONArray json = GetJSON(games);
+		return json;
+
+	}
+
+	public List<Game> getLastPlayedGames(User user) throws ServletException,
+			IOException {
+		GamesDataStoreI GDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getGamesDataStore();
+
+		List<Game> games = new ArrayList<Game>();
+		games = GDS.getLastPlayedGames(user);
+		return games;
+	}
+
+	public JSONArray getLastPlayedGamesJson(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List<Game> games = new ArrayList<Game>();
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getSeq());
+		games = getLastPlayedGames(user);
+		JSONArray json = GetJSON(games);
+		return json;
 	}
 }

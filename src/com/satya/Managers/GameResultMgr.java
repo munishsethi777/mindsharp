@@ -1,18 +1,22 @@
 package com.satya.Managers;
 
 import java.io.ByteArrayInputStream;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 
 import org.apache.log4j.Logger;
+import org.json.JSONArray;
+import org.json.JSONObject;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.NodeList;
@@ -23,10 +27,11 @@ import org.xml.sax.SAXParseException;
 import com.satya.ApplicationContext;
 import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.GameResult;
+import com.satya.BusinessObjects.Organization;
 import com.satya.BusinessObjects.User;
-import com.satya.BusinessObjects.UserGame;
 import com.satya.Persistence.GameResultDataStoreI;
 import com.satya.Persistence.GamesDataStoreI;
+import com.satya.Persistence.UserDataStoreI;
 import com.satya.Persistence.UserGameDataStoreI;
 import com.satya.Utils.StringUtils;
 import com.satya.enums.GameSkillType;
@@ -63,11 +68,12 @@ public class GameResultMgr {
 				// .getGame().getSeq()), new Date());
 				// UGDS.saveUserGame(userGame);
 				// // enrollment call done
-				try{
+				try {
 					GRDS.SaveGameResult(gameResult);
 					ApplicationContext.getApplicationContext().getBadgeMgr()
 							.allotBadge(gameResult);
-				}catch(Exception e){}
+				} catch (Exception e) {
+				}
 			} else {
 				response.getWriter().print("success=true");
 				return;
@@ -76,19 +82,22 @@ public class GameResultMgr {
 		}
 	}
 
-	public int getTotalGamesPlayedByUser(User user){
+	public int getTotalGamesPlayedByUser(User user) {
 		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getGameResultDataStore();
 		int count = GRDS.getTotalGamesPlayedByUser(user.getSeq());
 		return count;
 	}
-	public int getTotalResultBySkillTypeForUser(GameSkillType skillType, User user){
+
+	public int getTotalResultBySkillTypeForUser(GameSkillType skillType,
+			User user) {
 		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getGameResultDataStore();
-		int count = GRDS.getTotalResultsBySkillTypeForUser(skillType, user.getSeq());
+		int count = GRDS.getTotalResultsBySkillTypeForUser(skillType,
+				user.getSeq());
 		return count;
 	}
-	
+
 	private GameResult getGameResultFromXML(String xml,
 			HttpServletRequest request) {
 		GameResult gameResult = new GameResult();
@@ -120,12 +129,14 @@ public class GameResultMgr {
 			double accuratePercent = score / totalAttempts;
 
 			if (gameId != 0) {
-				//---@Author -- Baljeet Gaheer ----
+				// ---@Author -- Baljeet Gaheer ----
 				long seq = Long.valueOf(gameId);
-				GamesDataStoreI GDS = ApplicationContext.getApplicationContext().getDataStoreMgr().getGamesDataStore();
+				GamesDataStoreI GDS = ApplicationContext
+						.getApplicationContext().getDataStoreMgr()
+						.getGamesDataStore();
 				Game game = GDS.findBySeq(seq);
 				gameResult.setGame(game);
-				//---@----
+				// ---@----
 				gameResult.setUser(ApplicationContext.getApplicationContext()
 						.getLoggedinUser(request));
 				gameResult.setScore(Integer.valueOf(score));
@@ -237,10 +248,57 @@ public class GameResultMgr {
 		}
 		return null;
 	}
-	public int getResultByDays(long userId,int Days){
+
+	public int getResultByDays(long userId, int Days) {
 		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
-		.getDataStoreMgr().getGameResultDataStore();
+				.getDataStoreMgr().getGameResultDataStore();
 		int resCount = GRDS.getResultByDays(userId, Days);
 		return resCount;
+	}
+
+	public JSONArray getLearderBoard(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		GamesMgr gameMgr = ApplicationContext.getGamesMgr();
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getSeq());
+		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getGameResultDataStore();
+		JSONArray jsonArr = new JSONArray();
+		JSONObject json = new JSONObject();
+		List<Game> games = gameMgr.getLastPlayedGames(user);
+		Organization org = user.getOrganization();
+
+		long orgSeq = 0;
+		if (org != null) {
+			orgSeq = org.getSeq();
+		} else {
+			log.error("Organization is null for userseq  " + user.getSeq());
+			throw new RuntimeException("Organization is null for userseq  "
+					+ user.getSeq());
+		}
+		for (Game game : games) {
+			try {
+				List<GameResult> gameResults = GRDS.getResultByOrg(
+						game.getSeq(), orgSeq);
+				json.put("gameName", game.getName());
+				json.put("gameSeq", game.getSeq());
+				JSONObject resultJson = new JSONObject();
+				for (GameResult gameResult : gameResults) {
+					resultJson.put("userName", gameResult.getUser()
+							.getUserName());
+					resultJson.put("score", gameResult.getScore());
+				}
+				json.put("gameResult", resultJson);
+				jsonArr.put(json);
+			} catch (Exception e) {
+				log.error("Error during call getLearderBoard for userseq "
+						+ user.getSeq(), e);
+				throw new RuntimeException(e);
+			}
+		}
+
+		return jsonArr;
 	}
 }

@@ -6,7 +6,60 @@
 <script>
 	$(function() {
 		setActiveButton("dashboard");
+		getSuggestedGames();
+		getRecentPlayedGames();
 	});
+	function getSuggestedGames(){
+		$(".gamesDiv").html("<img src='images/loading.gif'/>");
+		$.getJSON('Games?action=getGamesBySkills' ,function(data){
+			$(".gamesDiv").html("");
+			$.each(data,function(key,value){				
+				var gamesDiv = "";
+				gamesDiv += "<div class='suggestedGameBlock'>";
+				gamesDiv += "<div class='widget-gameimage'>";
+				gamesDiv += "<a href='Games?action=showGame&id="+ value.seq +"'>";
+				gamesDiv += "<img width='100%' src='images/games/small/"+ value.seq +".jpg'></a>";
+				gamesDiv += "</div>";
+				gamesDiv += "<div style='padding:5px;'>";
+				gamesDiv += "<h4>" + value.gameName + "</h4>" ;
+				gamesDiv += "<h5>" + value.gameDescription + "</h5>" ;
+				gamesDiv += "<p class='widget-skills'>"
+				$.each(value.tags,function(key,value){
+					gamesDiv += "<span class='label label-xlg label-primary arrowed arrowed-right'>";
+					gamesDiv += value; 
+					gamesDiv += "</span>";
+				});
+				gamesDiv += "</p></div></div><div style='clear:both'></div>";
+				$(".gamesDiv").append(gamesDiv).hide().fadeIn('fast');
+			});
+		}).error(function(e) {
+			location.reload();
+		});
+  				
+  	}
+	function getRecentPlayedGames(){
+		$(".recentPlayedDiv").html("<img src='images/loading.gif'/>");
+		$.getJSON('Games?action=getLastPlayedGames' ,function(data){
+			$(".recentPlayedDiv").html("");
+			$.each(data,function(key,value){				
+				var gamesDiv = "";
+				gamesDiv += "<div class='suggestedGameBlock'>";
+				gamesDiv += "<div class='widget-gameimage'>";
+				gamesDiv += "<img width='90%' src='images/games/small/"+ value.seq +".jpg'>";
+				gamesDiv += "</div>";
+				gamesDiv += "<div style='padding:5px;'>";
+				gamesDiv += "<h4>" + value.gameName + "</h4>" ;
+				gamesDiv += "Played on : 12th May 2014<br>";
+				gamesDiv += "Scored : 340<score><br>";
+				gamesDiv += "Percentage : 20%<percent><br>";
+				gamesDiv += "</div></div><div style='clear:both'></div>";
+				$(".recentPlayedDiv").append(gamesDiv).hide().fadeIn('fast');
+			});
+		}).error(function(e) {
+			location.reload();
+		});
+  				
+  	}
 </script>
 <%@ include file="headerPrivate.jsp"%>
 </head>
@@ -20,55 +73,7 @@
 						<h4 class="widget-title"><i class="menu-icon fa fa-bell"></i> SUGGESTED GAMES</h4>
 					</div>
 					<div class="widget-body">
-						<div class="widget-main padding-6">
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\1.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									<h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, r including versions of Lorem Ipsum.</h5>
-									<p class="widget-skills">
-										<span class="label label-xlg label-primary arrowed arrowed-right">Estimation</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Mental Math</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Multi Tasking</span>
-									</p>
-								</div>
-							</div>
-							<div style="clear:both"></div>
-			<!--  Repeated Blocks starts-->
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\2.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									<h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, </h5>
-									<p class="widget-skills">
-										<span class="label label-xlg label-primary arrowed arrowed-right">Estimation</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Mental Math</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Multi Tasking</span>
-									</p>
-								</div>
-							</div>
-							<div style="clear:both"></div>
-							
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\5.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									<h5>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's </h5>
-									<p class="widget-tags">
-										<span class="label label-xlg label-primary arrowed arrowed-right">Estimation</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Mental Math</span>
-										<span class="label label-xlg label-primary arrowed arrowed-right">Multi Tasking</span>
-									</p>
-								</div>
-							</div>
-							<div style="clear:both"></div>
-			<!--  Repeated Blocks ends-->
+						<div class="widget-main padding-6 gamesDiv">
 						</div>
 					</div>
 				</div>
@@ -82,45 +87,8 @@
 						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> RECENTLY PLAYED GAMES</h4>
 					</div>
 					<div class="widget-body">
-						<div class="widget-main padding-6">
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\6.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									Played on : 12th May 2014 <br>
-									Scored : 340<score><br>
-									Percentage: 20%<percent>
-								</div>
-							</div>
-							<div style="clear:both"></div>
-			<!--  Repeated Blocks starts-->
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\7.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									Played on : 12th May 2014 <br>
-									Scored : 340<score><br>
-									Percentage: 20%<percent>
-								</div>
-							</div>
-							<div style="clear:both"></div>
+						<div class="widget-main padding-6 recentPlayedDiv">
 							
-							<div class="suggestedGameBlock">
-								<div class="widget-gameimage">
-									<img src = "images\games\small\8.jpg" width="100%">
-								</div>
-								<div style="padding:5px;">
-									<h4>BootCamp Training New Game For Employees</h4>
-									Played on : 12th May 2014 <br>
-									Scored : 340<score><br>
-									Percentage: 20%<percent>
-								</div>
-							</div>
-							<div style="clear:both"></div>
 							
 			<!--  Repeated Blocks ends-->
 						</div>
