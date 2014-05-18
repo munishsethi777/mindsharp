@@ -22,7 +22,7 @@
 				gamesDiv += "</div>";
 				gamesDiv += "<div style='padding:5px;'>";
 				gamesDiv += "<h4>" + value.gameName + "</h4>" ;
-				gamesDiv += "<h5>" + value.gameDescription + "</h5>" ;
+				gamesDiv += "<h5>" + value.gameDescription.substring(0, 180) + "...</h5>" ;
 				gamesDiv += "<p class='widget-skills'>"
 				$.each(value.tags,function(key,value){
 					gamesDiv += "<span class='label label-xlg label-primary arrowed arrowed-right'>";

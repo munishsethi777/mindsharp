@@ -85,6 +85,7 @@
 <body>
 <%@ include file="headerPrivate.jsp" %>
 <div id="body" align="center" style="margin:auto">
+	
 	<div class="container">
   	
   	<%	List<Game> games =(List<Game>) request.getAttribute("games"); %>

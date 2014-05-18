@@ -1,16 +1,19 @@
 <%@ include file="includeJars.jsp" %>
 <%@ include file="includeJS.jsp" %>
+
+<%	User loggedinUser = (User)session.getAttribute("loggedInUser"); %>
 <html>
 <head>
 </head>
 <body>
- 	<div class="bodyDiv" style="margin:auto">
-  		<%@ include file="header.jsp" %> 
-	  	<%	Game game = null;
-	  		if(request.getAttribute("game") != null){
-	  			game = (Game) request.getAttribute("game");
-	  		}
-	  	%>
+<%@ include file="headerPrivate.jsp" %> 
+<div id="body">
+  	<div class="container">
+  	<%	Game game = null;
+  		if(request.getAttribute("game") != null){
+  			game = (Game) request.getAttribute("game");
+  		}
+  	%>
 	  	<div style="border:silver solid thin;width:1185px;padding:5px;">
 		 	<div class="gameObjectDiv" style="float:left;width:665px;height:550px;padding:5px;">
 				<% if(game.getIsGameEnrolled(loggedinUser)) {%>
@@ -55,5 +58,8 @@
 			</div>
 			<div style="clear:both"></div>
 		</div>
-	
-	</div> 
+	</div>
+</div>
+<%@ include file="footerPublic.jsp"%>
+</body>
+</html>

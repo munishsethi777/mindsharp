@@ -53,25 +53,27 @@
 			<c:if test="${errMessages != null}">
 				<tr>
 					<td>
-						<c:forEach items="${errMessages}" var="msg">
-							<c:out value="${msg}" />
-							</br>
-						</c:forEach>					</td>
+						<div class="alert alert-danger">
+							<c:forEach items="${errMessages}" var="msg">
+								<c:out value="${msg}" />
+								</br>
+							</c:forEach>
+						</div>				
+					</td>
 				</tr>
 			</c:if>
 
 			<tr>
 				<td>
 					<form class="form-horizontal"  id="form" name="frm1" method="post" action="User?action=login">
-				
 						<table border="0">
 							<tr>
 								<td>Username :</td>
-								<td><input id="username" name="username"></td>
+								<td><input type="text" id="username" name="username"></td>
 							</tr>
 							<tr>
 								<td>Password :</td>
-								<td><input id="password" name="password" ></td>
+								<td><input type="password" id="password" name="password" ></td>
 							</tr>
 
 							<tr>

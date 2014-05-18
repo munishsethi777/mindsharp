@@ -320,7 +320,7 @@ public class UserMgr {
 			sccMsgs.add("Password Updated successfully.");
 			request.setAttribute(IConstants.sccMessages, sccMsgs);
 		}
-		request.getRequestDispatcher("myAccount.jsp")
+		request.getRequestDispatcher("myAccountChangePassword.jsp")
 				.forward(request, response);
 	}
 

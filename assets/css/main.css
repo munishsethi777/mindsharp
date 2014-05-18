@@ -27,7 +27,7 @@ body {
 }
 #body{
 	min-height: 500px !important;
-	padding-top:30px;
+	padding:30px 0px 30px 0px;
 }
 /* Titles */
 h1, h2, h3, h4, h5, h6 {
@@ -94,7 +94,7 @@ a:after {
 }
 
 .navbar-inverse {
-	background: #336699;
+	background: #428bca;
 	border-color: #2d2d2d;
 }
 
@@ -197,10 +197,10 @@ a:after {
 	padding-right: 0;
 	}
 .main-content {
-	margin-left: 210px;
+	margin-left: 230px;
 	min-height: 100%;
-	padding-left: 10px;
 }
+
 .sidebar .nav-list>li {
 	border-color: #e5e5e5;
 	display: block;

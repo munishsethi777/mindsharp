@@ -108,6 +108,9 @@ public class UserServlet extends BaseServletClass {
 				JSONObject json = ApplicationContext.getApplicationContext()
 						.getOrganizationMgr().addOrgaziation(request, response);
 				response.getWriter().print(json.toString());
+			} else if (action.equals(LOGIN)) {
+				request.getRequestDispatcher("dashboard.jsp").forward(request,
+						response);
 			} else {
 				request.getRequestDispatcher("login.jsp").forward(request,
 						response);
