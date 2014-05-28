@@ -37,6 +37,7 @@ public class UserServlet extends BaseServletClass {
 	private static final String UPLOAD_IMAGE = "uploadImage";
 	private static final String ADD_ORGANIZATION = "addOrganization";
 	private static final String SET_ORG_ON_USER = "setOrgOnUser";
+	private static final String UPDATE_MY_ACCOUNT = "updateMyaccount";
 
 	Logger log = Logger.getLogger(UserServlet.class.getName());
 
@@ -75,7 +76,7 @@ public class UserServlet extends BaseServletClass {
 					.getApplicationContext().getGameResultsMgr();
 
 			if (action.equals(MYACCOUNT)) {
-				userMgr.updateAccountInfo(request, response);
+				userMgr.showMyAccount(request, response);
 				request.getRequestDispatcher("myAccount.jsp").forward(request,
 						response);
 			} else if (action.equals(LOGOUT)) {
@@ -146,6 +147,9 @@ public class UserServlet extends BaseServletClass {
 			} else if (action.equals(SET_ORG_ON_USER)) {
 				ApplicationContext.getUserMgr().setOrgaziationOnUser(request,
 						response);
+			}else if(action.equals(UPDATE_MY_ACCOUNT)){
+				ApplicationContext.getApplicationContext().getUserMgr()
+						.updateMyAccount(request, response);
 			}
 		}
 

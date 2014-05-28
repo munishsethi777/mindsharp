@@ -181,12 +181,22 @@ a:after {
 .widget-body .suggestedGameBlock{
 	vertical-align: top;
 	border-bottom: 1px silver solid;
+	padding-bottom:5px;
 }
 .widget-gameimage{
 	float:left;width:30%;margin:10px
 }
 .widget-skills{
 	margin:0px !important;
+}
+.bootstrapTable>thead>tr {
+color: #707070;
+font-weight: normal;
+background: #F2F2F2;
+background-image: -webkit-linear-gradient(top, #f8f8f8 0, #ececec 100%);
+background-image: linear-gradient(to bottom, #f8f8f8 0, #ececec 100%);
+background-repeat: repeat-x;
+filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#fff8f8f8', endColorstr='#ffececec', GradientType=0);
 }
 /*SIDE BAR*/
 .sidebar {

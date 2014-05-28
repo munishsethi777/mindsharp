@@ -17,6 +17,8 @@ public class User {
 	private String emailId;
 	private String fullName;
 	private String address;
+	private String country;
+	
 	private String mobile;
 	private Date signupDate;
 	private Date lastLoginDate;
@@ -30,6 +32,7 @@ public class User {
 	private String status;
 	private String imageName;
 	private byte[] imageByte;
+	
 
 	public User(){
 		
@@ -164,5 +167,11 @@ public class User {
 	}
 	public void setImageByte(byte[] imgbyte) {
 		this.imageByte = imgbyte;
+	}
+	public String getCountry() {
+		return country;
+	}
+	public void setCountry(String country) {
+		this.country = country;
 	}
 }

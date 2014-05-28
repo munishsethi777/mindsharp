@@ -4,8 +4,53 @@
 <html>
   	<script>
 	     $(function() {
+	    	resetAutocomplete($(".orgType").val());
 		 	setActiveButton("accountDetails");
-		 	
+		 	$(".orgTypeSel").change(resetAutocomplete);
+			function resetAutocomplete(orgType) {
+			   // $("#organ").autocomplete("destroy");
+			    $("#organ").autocomplete({
+			         source:"Organization?action=findOrganization&orgType="+orgType,
+			         minLength: 2,
+			         select: function( event, ui ) {
+			           	 $(".orgName").text(ui.item.value);
+			                $(".orgAddress").text(ui.item.orgAddress);
+			                $(".orgState").text(ui.item.orgState);
+			                $("#orgSeq").val(ui.item.seq);
+			            }
+			    });
+			}
+			$.getJSON("Organization?action=getOrganizationTypesJSON",function(data){
+		    	$(".orgType").html("<select name='orgTypeSelect' class='orgTypeSel' onChange='orgTypeChange()'></select>");
+		    	$.each(data,function(key,value){
+		    		
+		    		$('.orgTypeSel')
+		            .append($("<option></option>")
+		            .attr("value",value)
+		            .text(key)); 
+		    		
+		    	});
+		    });
+		    function orgTypeChange(){
+		    	var orgType = $(".orgTypeSel").val();
+		    	$.getJSON("Organization?action=getOrganizationStreamsJSON&orgType="+ orgType,function(data){
+			    	$(".orgTypeStream").html("<select class='orgStreamSel'></select>");
+			    	$.each(data,function(key,value){
+			    		$('.orgStreamSel')
+			            .append($("<option></option>")
+			            .attr("value",value)
+			            .text(key)); 
+			    		
+			    	});
+			    });
+		    }
+		    $("#saveOrg").click(function(){
+				orgSeq = $("#orgSeq").val();
+				$.post("User?action=setOrgOnUser&seq=" + orgSeq, function(json){
+					 location.reload();
+				});
+			});
+		    
 		 	var theme = "bootstrap";
 		 	$('.text-input').jqxInput({ height: 25, width: 200,theme:theme });		 	
 		 	// add validation rules.
@@ -156,7 +201,7 @@
 	    </div>
    		<table style="border:solid silver thin;width:100%">
     		<tr>
-    			<td class="gameLabelTD">Organization Names</td>
+    			<td class="gameLabelTD">Organization Name</td>
 					<input type="hidden" id="orgSeq" name="seq"/>
 					<td class="gameValueTD"><input id="organ" />	
 					<input type="button" value="Save" id="saveOrg"/>					

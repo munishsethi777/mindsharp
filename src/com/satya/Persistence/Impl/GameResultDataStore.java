@@ -123,12 +123,13 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 		gameResult.setUser(new User(userSeq));
 		gameResult.setGame(new Game(gameSeq));
 		try {
-			String userName = rs.getString("username");
-			gameResult.getUser().setUserName(userName);
-
 			String gameName = rs.getString("gamename");
 			gameResult.getGame().setName(gameName);
 
+			String userName = rs.getString("username");
+			gameResult.getUser().setUserName(userName);
+
+			
 			String skillType = rs.getString("skilltype");
 			gameResult.getGame().setGameSkillType(
 					GameSkillType.valueOf(skillType));

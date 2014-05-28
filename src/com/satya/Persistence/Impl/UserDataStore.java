@@ -39,6 +39,8 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 	private final static String UPDATE_IMAGE = "Update users set imagename = ? where seq = ?";
 	private final static String UPDATE_MY_SKILLS = "Update users set myskills = ? where seq = ?";
 	private final static String UPDATE_ORG = "update users set orgseq = ? where seq = ?";
+	private final static String UPDATE_USER = "update users set emailid = ?, fullname = ?, mobile = ?, country= ?, address = ? where seq = ?";
+	
 	private PersistenceMgr persistenceMgr;
 
 	public UserDataStore(PersistenceMgr psmgr) {
@@ -52,12 +54,23 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 			if (user.getOrganization() != null) {
 				orgSeq = user.getOrganization().getSeq();
 			}
-			Object[] params = new Object[] { user.getEmailId(),
-					user.getUserName(), user.getPassword(), user.getFullName(),
-					user.getMobile(), user.getMobile(), user.getSignupDate(),
-					user.getAddress(), user.getIsActive(), orgSeq,
-					user.getIsLimited() };
-			persistenceMgr.excecuteUpdate(SAVE_USER, params);
+			Object[] params = null;
+			String sql = SAVE_USER;
+			if(user.getSeq()==0){
+				params = new Object[] { user.getEmailId(),
+						user.getUserName(), user.getPassword(), user.getFullName(),
+						user.getMobile(), user.getCountry(), user.getSignupDate(),
+						user.getAddress(), user.getIsActive(), orgSeq,
+						user.getIsLimited() };
+			}else{
+				sql = UPDATE_USER;
+				params = new Object[] { user.getEmailId(),
+						 user.getFullName(),
+						user.getMobile(), user.getCountry(),
+						user.getAddress(),user.getSeq() };
+			}
+			
+			persistenceMgr.excecuteUpdate(sql, params);
 			user.setSeq(persistenceMgr.getLastUpdatedSeq());
 		} catch (Exception e) {
 			logger.error(e);
@@ -111,6 +124,7 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 			String fullName = rs.getString("fullname");
 			String address = rs.getString("address");
 			String mobile = rs.getString("mobile");
+			String country = rs.getString("country");
 			Timestamp lastLoginTS = null;
 
 			if (rs.getDate("lastlogindate") != null) {
@@ -136,6 +150,7 @@ public class UserDataStore implements UserDataStoreI, RowMapper {
 			user.setFullName(fullName);
 			user.setAddress(address);
 			user.setMobile(mobile);
+			user.setCountry(country);
 			user.setLastLoginDate(lastLoginTS);
 			user.setSignupDate(signupTS);
 			user.setIsActive(isActive);

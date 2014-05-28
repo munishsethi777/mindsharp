@@ -214,40 +214,7 @@ public class UserMgr {
 		request.getRequestDispatcher("myAccount.jsp")
 				.forward(request, response);
 	}
-
-	// public void uploadImage(HttpServletRequest request, HttpServletResponse
-	// response)throws ServletException, IOException{
-	// List<String> errorMsgs = new ArrayList<String>();
-	// String imageName = request.getParameter("userImg");
-	// if (checkEmpty(imageName)) {
-	// errorMsgs.add("Choose Image File");
-	// }
-	// if (errorMsgs != null && errorMsgs.size() > 0) {
-	// request.setAttribute(IConstants.errMessages, errorMsgs);
-	// } else {
-	// UserDataStoreI UDS =
-	// ApplicationContext.getApplicationContext().getDataStoreMgr().getUserDataStore();
-	// User user =
-	// UDS.findBySeq(ApplicationContext.getApplicationContext().getLoggedinUser(request).getSeq());
-	// user.setImageName(imageName);
-	// try {
-	// UDS.updateImage(user);
-	// } catch (Exception e) {
-	// // TODO Auto-generated catch block
-	// e.printStackTrace();
-	// }
-	// HttpSession session = request.getSession(true);
-	// session.setAttribute(IConstants.loggedInUser, user);
-	// request.setAttribute(IConstants.loggedInUser, user);
-	// List<String> sccMsgs = new ArrayList<String>();
-	// sccMsgs.add("Image Uploaded Sucessfully.");
-	// request.setAttribute(IConstants.sccMessages, sccMsgs);
-	// }
-	// request.getRequestDispatcher("myAccount.jsp").forward(request,
-	// response);
-	//
-	// }
-
+	
 	public void setOrgaziationOnUser(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		String orgSeqStr = request.getParameter("seq");
@@ -373,7 +340,7 @@ public class UserMgr {
 		return json;
 	}
 
-	public void updateAccountInfo(HttpServletRequest request,
+	public void showMyAccount(HttpServletRequest request,
 			HttpServletResponse response) {
 		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getUserDataStore();
@@ -387,4 +354,32 @@ public class UserMgr {
 		session.setAttribute(IConstants.loggedInUser, user);
 		request.setAttribute(IConstants.loggedInUser, user);
 	}
+	
+	public void updateMyAccount(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException{
+		String fullName = request.getParameter("fullName");
+		String emailId = request.getParameter("emailId");
+		String mobile = request.getParameter("mobile");
+		String address = request.getParameter("address");
+		String country = request.getParameter("country");
+		
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		HttpSession session = request.getSession(true);
+		User loggedUser = (User) session.getAttribute(IConstants.loggedInUser);
+		User user = UDS.findBySeq(loggedUser.getSeq());
+		user.setFullName(fullName);
+		user.setEmailId(emailId);
+		user.setMobile(mobile);
+		user.setAddress(address);
+		user.setCountry(country);
+		
+		UDS.Save(user);
+		reloadSessionUser(request);
+		request.getRequestDispatcher("myAccount.jsp").forward(request,
+				response);
+	}
+
+
+
 }

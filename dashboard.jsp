@@ -60,12 +60,70 @@
 		});
   				
   	}
+
 </script>
 <%@ include file="headerPrivate.jsp"%>
 </head>
 <body class="">
 	<div id="body">
 		<div class="container">
+			<!--  LEADERBOARD AREA STARTS -->
+			<div id="recentGamesPlayedWidget" class="col-sm-12 widget-container-col ui-sortable">
+				<div class="widget-box">
+					<div class="widget-header">
+						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> LEADERBOARD - Show leaderboard for the
+						selected skill </h4>
+						
+						<select>
+							<option value="allSkills">ALL SKILLS</option>
+							<option value="attention">ATTENTION</option>
+							<option value="flexibility">FLEXIBILITY</option>
+							<option value="memory">MEMORY</option>
+							<option value="problemSolving">PROBLEM SOLVING</option>
+							<option value="speed">SPEED</option>
+						</select>
+					</div>
+					<div class="widget-body">
+						<div class="widget-main padding-6">
+							
+							
+							<table id = "sample-table-1" class="bootstrapTable table table-striped table-bordered table-hover">
+								<thead>
+									<tr>
+										<th>Name</th>
+										<th>Score</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>Munish Sethi</th>
+										<th>120</th>
+									</tr>
+									<tr>
+										<th>Munish Sethi</th>
+										<th>120</th>
+									</tr>
+									<tr>
+										<th>Munish Sethi</th>
+										<th>120</th>
+									</tr>
+									<tr>
+										<th>Munish Sethi</th>
+										<th>120</th>
+									</tr>
+									<tr>
+										<th>Munish Sethi</th>
+										<th>120</th>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--  LEADERBOARD AREA ENDS -->
+			<div style="clear:both;padding:15px"></div>
+			
 			<!--  SUGGESTED GAMES WIDGET STARTS -->
 			<div id="suggestedGamesWidget" class="col-sm-6 widget-container-col ui-sortable">
 				<div class="widget-box">
@@ -99,20 +157,7 @@
 
 			<div style="clear:both;padding:15px"></div>
 					
-			<!--  LEADERBOARD AREA STARTS -->
-			<div id="recentGamesPlayedWidget" class="col-sm-12 widget-container-col ui-sortable">
-				<div class="widget-box">
-					<div class="widget-header">
-						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> LEADERBOARD</h4>
-					</div>
-					<div class="widget-body">
-						<div class="widget-main padding-6">
-						</div>
-					</div>
-				</div>
-			</div>
-			<!--  LEADERBOARD AREA ENDS -->
-			<div style="clear:both;padding:15px"></div>
+			
 						
 
 		</div>

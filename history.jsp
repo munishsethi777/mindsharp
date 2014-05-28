@@ -20,7 +20,6 @@
 	  		});
 	  		
 	  		$.getJSON("User?action=scoreChartJSON",function(data){
-	  			
 	  			chart.series[0].setData(data);
 	  		});
 	  		//chart.series[0].setData([129.2, 144.0, 176.0, 135.6] );
@@ -35,29 +34,33 @@
 	  if(request.getAttribute("gameResults")!=null){
   		List<GameResult> gameResults =(List<GameResult>) request.getAttribute("gameResults"); %>
   	<div id="body">
-  		<div class="container">   
-    	<table align="left" border="0" style="border:solid silver thin">
+  		<div class="container"> 
+  		
+  		<div id="graph" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+  		  
+    	<table id = "sample-table-1" class="bootstrapTable table table-striped table-bordered table-hover">
  		<c:if test="${gameResults != null}">
- 			<tr>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Game</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Dated</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Score</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Correct</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">levels</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Attempts</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Played secs</th>
- 				<th align="left" class="ui-widget-header" style="font-size:12px;">Accuracy %</th>
- 				
- 			</tr>
+ 			<thead>
+	 			<tr>
+	 				<th>Game</th>
+	 				<th width="18%">Dated</th>
+	 				<th width="5%">Score</th>
+	 				<th width="5%">Correct</th>
+	 				<th width="5%">levels</th>
+	 				<th width="8%">Attempts</th>
+	 				<th width="10%">Time(mins)</th>
+	 				<th width="9%">Accuracy %</th>
+	 			</tr>
+	 		</thead>
 			<c:forEach items="${gameResults}" var="result">
 				<tr>
 					<td><c:out value="${result.game.name}" /></td>
-					<td><c:out value="${result.dated}" /></td>
+					<td><c:out value="${result.formattedResultDate}" /></td>
 					<td><c:out value="${result.score}" /></td>
 					<td><c:out value="${result.correct}" /></td>
 					<td><c:out value="${result.levels}" /></td>
 					<td><c:out value="${result.totalAttempts}" /></td>
-					<td><c:out value="${result.timePlayedSeconds}" /></td>
+					<td><c:out value="${result.timePlayedMinutes}" /></td>
 					<td><c:out value="${result.accuratePercent}" /></td>
 				</tr>
 			</c:forEach>
@@ -65,7 +68,7 @@
     </table>
     <%} %>
     
-   <div id="graph" style="min-width: 400px; height: 400px; margin: 0 auto"></div>
+   
    	</div>
    </div>
     </body>

@@ -2,6 +2,8 @@ package com.satya.BusinessObjects;
 
 import java.util.Date;
 
+import com.satya.Utils.DateUtils;
+
 public class GameResult {
 	private long seq;
 	private User user;
@@ -97,6 +99,17 @@ public class GameResult {
 	public void setReactionTimeSeconds(int reactionTimeSeconds) {
 		this.reactionTimeSeconds = reactionTimeSeconds;
 	}
-
-								
+	public String getFormattedResultDate(){
+		String formattedDate = "";
+		if(this.getDated() != null){
+			formattedDate =  DateUtils.getGridDateFormat(this.getDated());
+		}
+		return formattedDate;
+	}
+	public float getTimePlayedMinutes() {
+		if(this.getTimePlayedSeconds()!=0){
+			return getTimePlayedSeconds()/60;
+		}
+		return 0;
+	}							
 }
