@@ -29,6 +29,11 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	private final static String FIND_BY_ORG = "select gameresults.*, users.username from gameresults"
 			+ " inner join users on users.seq = gameresults.userseq "
 			+ " where gameresults.gameseq = ? and users.orgseq = ?";
+	private final static String FIND_LAST_PLAYED_GAMES = " SELECT games.name as gamename, tags.tag FROM gameresults"
+			+ " inner join games on games.seq = gameresults.gameseq"
+			+ " inner join gametags on gametags.gameseq = games.seq"
+			+ " inner join  tags on tags.seq =  gametags.tagseq"
+			+ " where gameresults.userseq = ? order by  gameresults.seq desc LIMIT 3";
 
 	private PersistenceMgr persistenceMgr;
 
@@ -85,6 +90,15 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	}
 
 	@Override
+	public List<Game> getLastPlayedGames(User user) {
+		Object[] params = new Object[] { user.getSeq() };
+		@SuppressWarnings("unchecked")
+		List<Game> games = (List<Game>) persistenceMgr.executePSQuery(
+				FIND_LAST_PLAYED_GAMES, params, this);
+		return games;
+	}
+
+	@Override
 	public List<GameResult> findResultsByUser(long userId) {
 		Object[] params = new Object[] { userId };
 		return (List<GameResult>) persistenceMgr.executePSQuery(
@@ -123,17 +137,25 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 		gameResult.setUser(new User(userSeq));
 		gameResult.setGame(new Game(gameSeq));
 		try {
+			String userName = rs.getString("username");
+			gameResult.getUser().setUserName(userName);
+		} catch (Exception e) {
+		}
+		try {
 			String gameName = rs.getString("gamename");
 			gameResult.getGame().setName(gameName);
+		} catch (Exception e) {
 
 			String userName = rs.getString("username");
 			gameResult.getUser().setUserName(userName);
 
-			
+		}
+		try {
 			String skillType = rs.getString("skilltype");
 			gameResult.getGame().setGameSkillType(
 					GameSkillType.valueOf(skillType));
 		} catch (Exception e) {
+
 		}
 
 		gameResult.setScore(score);
