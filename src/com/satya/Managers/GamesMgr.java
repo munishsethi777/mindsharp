@@ -81,7 +81,7 @@ public class GamesMgr {
 		} else {
 			throw new RuntimeException(TAG_SEQ_IS_NULL);
 		}
-		if (skillType.equals("all")) {
+		if (skillType.equals(IConstants.ALL)) {
 			games = GDS.findByTag(tagSeq);
 		} else {
 			games = GDS.findByTagAndSkill(tagSeq, skillType);
@@ -126,16 +126,6 @@ public class GamesMgr {
 
 	}
 
-	public List<Game> getLastPlayedGames(User user) throws ServletException,
-			IOException {
-		GamesDataStoreI GDS = ApplicationContext.getApplicationContext()
-				.getDataStoreMgr().getGamesDataStore();
-
-		List<Game> games = new ArrayList<Game>();
-		games = GDS.getLastPlayedGames(user);
-		return games;
-	}
-
 	public JSONArray getLastPlayedGamesJson(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		List<Game> games = new ArrayList<Game>();
@@ -143,7 +133,7 @@ public class GamesMgr {
 				.getDataStoreMgr().getUserDataStore();
 		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
 				.getLoggedinUser(request).getSeq());
-		games = getLastPlayedGames(user);
+		// games = getLastPlayedGames(user);
 		JSONArray json = GetJSON(games);
 		return json;
 	}

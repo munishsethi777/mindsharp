@@ -22,7 +22,10 @@ public interface GameResultDataStoreI {
 
 	public int getResultByDays(long userId, int Days);
 
-	public List<GameResult> getResultByOrg(long gameSeq, long orgSeq);
+	public List<GameResult> getResultByOrg(long orgSeq);
+
+	public List<GameResult> getResultByOrgAndSkill(GameSkillType skillType,
+			long orgSeq);
 
 	public List<Game> getLastPlayedGames(User user);
 }

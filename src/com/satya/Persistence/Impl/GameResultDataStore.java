@@ -26,9 +26,14 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	private final static String COUNT_GAMES_PLAYED = "select count(*) from gameresults where userseq=?";
 	private final static String FIND_BY_SKILL_TYPE = "select count(*) from gameresults,games where gameresults.gameseq = games.seq and games.skilltype = ? and userseq = ?";
 	private final static String FIND_BY_DAYS = "select count(*) from  gameresults where userseq=? and DATE(dated) >= DATE(CURDATE()- ?)";
-	private final static String FIND_BY_ORG = "select gameresults.*, users.username from gameresults"
-			+ " inner join users on users.seq = gameresults.userseq "
-			+ " where gameresults.gameseq = ? and users.orgseq = ?";
+	private final static String FIND_BY_ORG = " select gameresults.*, AVG(gameresults.score) as avgScore , users.username "
+			+ " from gameresults inner join users on users.seq = gameresults.userseq "
+			+ " where users.orgseq = ? GROUP BY users.username order by avgScore desc ";
+
+	private final static String FIND_BY_ORG_AND_SKILL = " select gameresults.*, AVG(gameresults.score) as avgScore , users.username "
+			+ " from gameresults inner join users on users.seq = gameresults.userseq "
+			+ " inner join games on games.seq = gameresults.gameseq"
+			+ " where games.skilltype = ? and users.orgseq = ? GROUP BY users.username order by score desc ";
 	private final static String FIND_LAST_PLAYED_GAMES = " SELECT games.name as gamename, tags.tag FROM gameresults"
 			+ " inner join games on games.seq = gameresults.gameseq"
 			+ " inner join gametags on gametags.gameseq = games.seq"
@@ -55,10 +60,18 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	}
 
 	@Override
-	public List<GameResult> getResultByOrg(long gameSeq, long orgSeq) {
-		Object[] params = new Object[] { gameSeq, orgSeq };
+	public List<GameResult> getResultByOrg(long orgSeq) {
+		Object[] params = new Object[] { orgSeq };
 		return (List<GameResult>) persistenceMgr.executePSQuery(FIND_BY_ORG,
 				params, this);
+	}
+
+	@Override
+	public List<GameResult> getResultByOrgAndSkill(GameSkillType skillType,
+			long orgSeq) {
+		Object[] params = new Object[] { skillType, orgSeq };
+		return (List<GameResult>) persistenceMgr.executePSQuery(
+				FIND_BY_ORG_AND_SKILL, params, this);
 	}
 
 	@Override
@@ -157,7 +170,6 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 		} catch (Exception e) {
 
 		}
-
 		gameResult.setScore(score);
 		gameResult.setCorrect(correct);
 		gameResult.setLevels(levels);
@@ -166,7 +178,12 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 		gameResult.setOpportunities(opportunities);
 		gameResult.setAccuratePercent(accuratePercent);
 		gameResult.setReactionTimeSeconds(reactionTimeSeconds);
+		try {
+			int avgScore = rs.getInt("avgScore");
+			gameResult.setScore(avgScore);
+		} catch (Exception e) {
 
+		}
 		if (datedTS != null) {
 			gameResult.setDated(new Date(datedTS.getTime()));
 		}

@@ -15,4 +15,5 @@ public class IConstants {
 
 	public final static String SOURCE_URL = "SourceURL";
 	public final static String BLANK = "";
+	public final static String ALL = "all";
 }

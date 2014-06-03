@@ -8,6 +8,10 @@
 		setActiveButton("dashboard");
 		getSuggestedGames();
 		getRecentPlayedGames();
+		showLeaderboard();
+		$( "#skillSelect" ).change(function() {
+			showLeaderboard();
+		});
 	});
 	function getSuggestedGames(){
 		$(".gamesDiv").html("<img src='images/loading.gif'/>");
@@ -60,7 +64,30 @@
 		});
   				
   	}
-
+		function showLeaderboard(){
+			var selectedSkill = $( "#skillSelect" ).val()
+			$(".leaderboradDiv").html("<img src='images/loading.gif'/>");
+			$.getJSON("Games?action=showLeaderBoard&skillType=" + selectedSkill ,function(data){
+				$(".leaderboradDiv").html("");
+				var boardDiv = "";
+				boardDiv += '<table id = "sample-table-1" class="bootstrapTable table table-striped table-bordered table-hover">';
+				boardDiv += '<thead>';
+				boardDiv += '<tr><th>Name</th><th>Score</th>';
+				boardDiv += '</thead>';
+				boardDiv += '<tbody>';
+				$.each(data,function(key,value){
+					boardDiv += "<tr>";
+					boardDiv += "<th>" + value.userName + "</th>";
+					boardDiv += "<th>" + value.avgScore + "</th>";
+					boardDiv += "</tr>";
+				});
+				boardDiv += '</tbody>'
+				boardDiv += '</table>'
+				$(".leaderboradDiv").append(boardDiv).hide().fadeIn('fast');
+			}).error(function(e) {
+				location.reload();
+			});
+		}
 </script>
 <%@ include file="headerPrivate.jsp"%>
 </head>
@@ -74,8 +101,8 @@
 						<h4 class="widget-title"><i class="menu-icon fa fa-thumbs-up"></i> LEADERBOARD - Show leaderboard for the
 						selected skill </h4>
 						
-						<select>
-							<option value="allSkills">ALL SKILLS</option>
+						<select id="skillSelect">
+							<option value="all">ALL SKILLS</option>
 							<option value="attention">ATTENTION</option>
 							<option value="flexibility">FLEXIBILITY</option>
 							<option value="memory">MEMORY</option>
@@ -84,39 +111,7 @@
 						</select>
 					</div>
 					<div class="widget-body">
-						<div class="widget-main padding-6">
-							
-							
-							<table id = "sample-table-1" class="bootstrapTable table table-striped table-bordered table-hover">
-								<thead>
-									<tr>
-										<th>Name</th>
-										<th>Score</th>
-									</tr>
-								</thead>
-								<tbody>
-									<tr>
-										<th>Munish Sethi</th>
-										<th>120</th>
-									</tr>
-									<tr>
-										<th>Munish Sethi</th>
-										<th>120</th>
-									</tr>
-									<tr>
-										<th>Munish Sethi</th>
-										<th>120</th>
-									</tr>
-									<tr>
-										<th>Munish Sethi</th>
-										<th>120</th>
-									</tr>
-									<tr>
-										<th>Munish Sethi</th>
-										<th>120</th>
-									</tr>
-								</tbody>
-							</table>
+						<div class="widget-main padding-6 leaderboradDiv">
 						</div>
 					</div>
 				</div>

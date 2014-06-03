@@ -3,6 +3,7 @@ package com.satya.Managers;
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -25,6 +26,7 @@ import org.xml.sax.SAXException;
 import org.xml.sax.SAXParseException;
 
 import com.satya.ApplicationContext;
+import com.satya.IConstants;
 import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.GameResult;
 import com.satya.BusinessObjects.Organization;
@@ -258,16 +260,15 @@ public class GameResultMgr {
 
 	public JSONArray getLearderBoard(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-		GamesMgr gameMgr = ApplicationContext.getGamesMgr();
 		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getUserDataStore();
 		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
 				.getLoggedinUser(request).getSeq());
 		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
 				.getDataStoreMgr().getGameResultDataStore();
+		String skillType = (String) request.getParameter("skillType");
 		JSONArray jsonArr = new JSONArray();
 		JSONObject json = new JSONObject();
-		List<Game> games = gameMgr.getLastPlayedGames(user);
 		Organization org = user.getOrganization();
 
 		long orgSeq = 0;
@@ -278,25 +279,28 @@ public class GameResultMgr {
 			throw new RuntimeException("Organization is null for userseq  "
 					+ user.getSeq());
 		}
-		for (Game game : games) {
-			try {
-				List<GameResult> gameResults = GRDS.getResultByOrg(
-						game.getSeq(), orgSeq);
-				json.put("gameName", game.getName());
-				json.put("gameSeq", game.getSeq());
-				JSONObject resultJson = new JSONObject();
-				for (GameResult gameResult : gameResults) {
-					resultJson.put("userName", gameResult.getUser()
-							.getUserName());
-					resultJson.put("score", gameResult.getScore());
-				}
-				json.put("gameResult", resultJson);
-				jsonArr.put(json);
-			} catch (Exception e) {
-				log.error("Error during call getLearderBoard for userseq "
-						+ user.getSeq(), e);
-				throw new RuntimeException(e);
+
+		try {
+			List<GameResult> gameResults = new ArrayList<GameResult>();
+			if (skillType.equals(IConstants.ALL)) {
+				gameResults = GRDS.getResultByOrg(orgSeq);
+			} else {
+				GameSkillType skill = GameSkillType.valueOf(skillType);
+				gameResults = GRDS.getResultByOrgAndSkill(skill, orgSeq);
 			}
+
+			for (GameResult gameResult : gameResults) {
+				JSONObject resultJson = new JSONObject();
+				resultJson.put("userName", gameResult.getUser().getUserName());
+				resultJson.put("avgScore", gameResult.getScore());
+				jsonArr.put(resultJson);
+			}
+
+		} catch (Exception e) {
+			log.error(
+					"Error during call getLearderBoard for userseq "
+							+ user.getSeq(), e);
+			throw new RuntimeException(e);
 		}
 
 		return jsonArr;

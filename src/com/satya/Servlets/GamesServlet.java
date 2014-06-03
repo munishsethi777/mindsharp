@@ -42,6 +42,7 @@ public class GamesServlet extends BaseServletClass {
 	private static final String SAVE_RESULT = "saveResult";
 	private static final String SHOW_RECOMEMDED_GAMES = "getGamesBySkills";
 	private static final String SHOW_RECENT_PLAYED_GAMES = "getLastPlayedGames";
+	private static final String SHOW_LEADERBOARD = "showLeaderBoard";
 
 	public GamesServlet() {
 		super();
@@ -65,6 +66,7 @@ public class GamesServlet extends BaseServletClass {
 				.getDataStoreMgr().getTagDataStore();
 		ApplicationContext.getApplicationContext();
 		GamesMgr gameMgr = ApplicationContext.getGamesMgr();
+		GameResultMgr gameResultMgr = new GameResultMgr();
 		String action = request.getParameter("action");
 		/*
 		 * Show Games on Games page
@@ -94,6 +96,10 @@ public class GamesServlet extends BaseServletClass {
 			response.getWriter().print(jsonArray.toString());
 		} else if (action.equals(SHOW_RECENT_PLAYED_GAMES)) {
 			JSONArray jsonArray = gameMgr.getLastPlayedGamesJson(request,
+					response);
+			response.getWriter().print(jsonArray.toString());
+		} else if (action.equals(SHOW_LEADERBOARD)) {
+			JSONArray jsonArray = gameResultMgr.getLearderBoard(request,
 					response);
 			response.getWriter().print(jsonArray.toString());
 		}
