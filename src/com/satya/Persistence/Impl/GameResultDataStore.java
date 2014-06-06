@@ -69,7 +69,7 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	@Override
 	public List<GameResult> getResultByOrgAndSkill(GameSkillType skillType,
 			long orgSeq) {
-		Object[] params = new Object[] { skillType, orgSeq };
+		Object[] params = new Object[] { skillType.name(), orgSeq };
 		return (List<GameResult>) persistenceMgr.executePSQuery(
 				FIND_BY_ORG_AND_SKILL, params, this);
 	}

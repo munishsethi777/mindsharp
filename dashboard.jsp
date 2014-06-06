@@ -72,11 +72,13 @@
 				var boardDiv = "";
 				boardDiv += '<table id = "sample-table-1" class="bootstrapTable table table-striped table-bordered table-hover">';
 				boardDiv += '<thead>';
-				boardDiv += '<tr><th>Name</th><th>Score</th>';
+				boardDiv += '<tr><th style="width:10px">Rank</th><th>Name</th><th>Score</th>';
 				boardDiv += '</thead>';
 				boardDiv += '<tbody>';
+				var counter = 1;
 				$.each(data,function(key,value){
 					boardDiv += "<tr>";
+					boardDiv += "<th>"+ counter++  + "</th>";
 					boardDiv += "<th>" + value.userName + "</th>";
 					boardDiv += "<th>" + value.avgScore + "</th>";
 					boardDiv += "</tr>";

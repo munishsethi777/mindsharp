@@ -91,7 +91,7 @@ public class AuthenticationFilter implements Filter {
 				chain.doFilter(request, response);
 			}
 		}catch(Exception e){
-			log.error("Exception ouccered" ,e);
+			log.error("Exception occured" ,e);
 			chain.doFilter(request, response);
 		}
 	}
