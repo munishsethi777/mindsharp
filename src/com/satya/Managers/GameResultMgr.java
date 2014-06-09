@@ -35,6 +35,7 @@ import com.satya.Persistence.GameResultDataStoreI;
 import com.satya.Persistence.GamesDataStoreI;
 import com.satya.Persistence.UserDataStoreI;
 import com.satya.Persistence.UserGameDataStoreI;
+import com.satya.Utils.DateUtils;
 import com.satya.Utils.StringUtils;
 import com.satya.enums.GameSkillType;
 
@@ -320,7 +321,9 @@ public class GameResultMgr {
 			for (GameResult gameResult : gameResults) {
 				JSONObject resultJson = new JSONObject();
 				resultJson.put("score", gameResult.getScore());
-				resultJson.put("playedDate", gameResult.getDated());
+				String playedDate = DateUtils.getFormatedDate(
+						gameResult.getDated(), DateUtils.MMM_dd_yyyy);
+				resultJson.put("playedDate", playedDate);
 				resultJson.put("gameseq", gameResult.getGame().getSeq());
 				resultJson.put("gamename", gameResult.getGame().getName());
 				jsonArr.put(resultJson);
