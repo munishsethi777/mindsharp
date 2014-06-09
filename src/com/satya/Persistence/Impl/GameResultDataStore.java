@@ -34,10 +34,8 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 			+ " from gameresults inner join users on users.seq = gameresults.userseq "
 			+ " inner join games on games.seq = gameresults.gameseq"
 			+ " where games.skilltype = ? and users.orgseq = ? GROUP BY users.username order by score desc ";
-	private final static String FIND_LAST_PLAYED_GAMES = " SELECT games.name as gamename, tags.tag FROM gameresults"
+	private final static String FIND_LAST_PLAYED_GAMES = " SELECT gameresults.*, games.seq as gameseq, games.name as gamename  FROM gameresults"
 			+ " inner join games on games.seq = gameresults.gameseq"
-			+ " inner join gametags on gametags.gameseq = games.seq"
-			+ " inner join  tags on tags.seq =  gametags.tagseq"
 			+ " where gameresults.userseq = ? order by  gameresults.seq desc LIMIT 3";
 
 	private PersistenceMgr persistenceMgr;
@@ -103,12 +101,12 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 	}
 
 	@Override
-	public List<Game> getLastPlayedGames(User user) {
+	public List<GameResult> getLastPlayedGames(User user) {
 		Object[] params = new Object[] { user.getSeq() };
 		@SuppressWarnings("unchecked")
-		List<Game> games = (List<Game>) persistenceMgr.executePSQuery(
-				FIND_LAST_PLAYED_GAMES, params, this);
-		return games;
+		List<GameResult> gameResult = (List<GameResult>) persistenceMgr
+				.executePSQuery(FIND_LAST_PLAYED_GAMES, params, this);
+		return gameResult;
 	}
 
 	@Override
@@ -159,10 +157,8 @@ public class GameResultDataStore implements GameResultDataStoreI, RowMapper {
 			gameResult.getGame().setName(gameName);
 		} catch (Exception e) {
 
-			String userName = rs.getString("username");
-			gameResult.getUser().setUserName(userName);
-
 		}
+
 		try {
 			String skillType = rs.getString("skilltype");
 			gameResult.getGame().setGameSkillType(

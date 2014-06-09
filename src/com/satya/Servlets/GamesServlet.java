@@ -95,7 +95,7 @@ public class GamesServlet extends BaseServletClass {
 			JSONArray jsonArray = gameMgr.getGamesBySkills(request, response);
 			response.getWriter().print(jsonArray.toString());
 		} else if (action.equals(SHOW_RECENT_PLAYED_GAMES)) {
-			JSONArray jsonArray = gameMgr.getLastPlayedGamesJson(request,
+			JSONArray jsonArray = gameResultMgr.getLastPlayedGamesJson(request,
 					response);
 			response.getWriter().print(jsonArray.toString());
 		} else if (action.equals(SHOW_LEADERBOARD)) {

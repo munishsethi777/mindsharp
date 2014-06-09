@@ -49,12 +49,12 @@
 				var gamesDiv = "";
 				gamesDiv += "<div class='suggestedGameBlock'>";
 				gamesDiv += "<div class='widget-gameimage'>";
-				gamesDiv += "<img width='90%' src='images/games/small/"+ value.seq +".jpg'>";
+				gamesDiv += "<img width='90%' src='images/games/small/"+ value.gameseq +".jpg'>";
 				gamesDiv += "</div>";
 				gamesDiv += "<div style='padding:5px;'>";
-				gamesDiv += "<h4>" + value.gameName + "</h4>" ;
-				gamesDiv += "Played on : 12th May 2014<br>";
-				gamesDiv += "Scored : 340<score><br>";
+				gamesDiv += "<h4>" + value.gamename + "</h4>" ;
+				gamesDiv += "Played on : " +  value.playedDate + "<br>";
+				gamesDiv += "Scored : " + value.score   + "<score><br>";
 				gamesDiv += "Percentage : 20%<percent><br>";
 				gamesDiv += "</div></div><div style='clear:both'></div>";
 				$(".recentPlayedDiv").append(gamesDiv).hide().fadeIn('fast');

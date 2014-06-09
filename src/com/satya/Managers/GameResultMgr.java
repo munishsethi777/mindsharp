@@ -268,7 +268,6 @@ public class GameResultMgr {
 				.getDataStoreMgr().getGameResultDataStore();
 		String skillType = (String) request.getParameter("skillType");
 		JSONArray jsonArr = new JSONArray();
-		JSONObject json = new JSONObject();
 		Organization org = user.getOrganization();
 
 		long orgSeq = 0;
@@ -303,6 +302,34 @@ public class GameResultMgr {
 			throw new RuntimeException(e);
 		}
 
+		return jsonArr;
+	}
+
+	public JSONArray getLastPlayedGamesJson(HttpServletRequest request,
+			HttpServletResponse response) throws ServletException, IOException {
+		List<GameResult> gameResults = new ArrayList<GameResult>();
+		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getUserDataStore();
+		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
+				.getLoggedinUser(request).getSeq());
+		GameResultDataStoreI GRDS = ApplicationContext.getApplicationContext()
+				.getDataStoreMgr().getGameResultDataStore();
+		JSONArray jsonArr = new JSONArray();
+		try {
+			gameResults = GRDS.getLastPlayedGames(user);
+			for (GameResult gameResult : gameResults) {
+				JSONObject resultJson = new JSONObject();
+				resultJson.put("score", gameResult.getScore());
+				resultJson.put("playedDate", gameResult.getDated());
+				resultJson.put("gameseq", gameResult.getGame().getSeq());
+				resultJson.put("gamename", gameResult.getGame().getName());
+				jsonArr.put(resultJson);
+			}
+		} catch (Exception e) {
+			log.error("Error during call getLastPlayedGamesJson for userseq "
+					+ user.getSeq(), e);
+			throw new RuntimeException(e);
+		}
 		return jsonArr;
 	}
 }

@@ -2,7 +2,6 @@ package com.satya.Persistence;
 
 import java.util.List;
 
-import com.satya.BusinessObjects.Game;
 import com.satya.BusinessObjects.GameResult;
 import com.satya.BusinessObjects.User;
 import com.satya.enums.GameSkillType;
@@ -27,5 +26,5 @@ public interface GameResultDataStoreI {
 	public List<GameResult> getResultByOrgAndSkill(GameSkillType skillType,
 			long orgSeq);
 
-	public List<Game> getLastPlayedGames(User user);
+	public List<GameResult> getLastPlayedGames(User user);
 }

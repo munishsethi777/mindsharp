@@ -126,15 +126,4 @@ public class GamesMgr {
 
 	}
 
-	public JSONArray getLastPlayedGamesJson(HttpServletRequest request,
-			HttpServletResponse response) throws ServletException, IOException {
-		List<Game> games = new ArrayList<Game>();
-		UserDataStoreI UDS = ApplicationContext.getApplicationContext()
-				.getDataStoreMgr().getUserDataStore();
-		User user = UDS.findBySeq(ApplicationContext.getApplicationContext()
-				.getLoggedinUser(request).getSeq());
-		// games = getLastPlayedGames(user);
-		JSONArray json = GetJSON(games);
-		return json;
-	}
 }
